@@ -16,10 +16,12 @@ namespace ConsoleApp1
           
             IInterface test1 = new MyClass1();
             IInterface test2 = new MyClass2();
-            IInterface test3 = new MyClass();
+            MyClass test3 = new MyClass();
             test1.MethodTest();
             test2.MethodTest();
             test3.MethodTest();//ff
+
+            Console.WriteLine("exemple somme= {0}", test3.Add<String>("DA SILVA", "FRED"));
 
             Triple test = delegate (int i) { return 8; };
 
