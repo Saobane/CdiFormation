@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalkGame.Test", "WalkGame\WalkGame.Test.csproj", "{B4C56E00-6A3C-4E90-935E-BA9016188354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalkGame", "GameWalk\WalkGame.csproj", "{CDF856E9-E76A-4304-A01E-3A5AD727B41B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4C56E00-6A3C-4E90-935E-BA9016188354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C56E00-6A3C-4E90-935E-BA9016188354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C56E00-6A3C-4E90-935E-BA9016188354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C56E00-6A3C-4E90-935E-BA9016188354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF856E9-E76A-4304-A01E-3A5AD727B41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF856E9-E76A-4304-A01E-3A5AD727B41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF856E9-E76A-4304-A01E-3A5AD727B41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF856E9-E76A-4304-A01E-3A5AD727B41B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
