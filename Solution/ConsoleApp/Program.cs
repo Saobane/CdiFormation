@@ -36,6 +36,8 @@ namespace ConsoleApp
             Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
 
             int[] tabInt = { 1, 2, 12, 1, 2, 5 };
+
+            tabInt.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
             
              Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
             int[] tz ;

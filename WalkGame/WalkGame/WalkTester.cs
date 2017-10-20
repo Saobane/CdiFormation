@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Media;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace WalkGame
 {
@@ -87,8 +88,13 @@ namespace WalkGame
         public void TestMoveLivePlayerToDeadPlayer()
         {
             var player = new Player(-1);
-            var engine = new DeterministEngine();
-            var game = new Game(new List<Player>(){player}, engine);
+            var randomEngineMock = new Mock<IMoveEngine>();
+
+            randomEngineMock.Setup(x => x.Play())
+                .Returns(() => 1);
+
+            //var engine = new DeterministEngine();
+            var game = new Game(new List<Player>(){player}, randomEngineMock.Object);
             game.Play();
             Assert.IsFalse(player.Alive);
         }
@@ -97,8 +103,12 @@ namespace WalkGame
         public void TestLivePlayerToLivelayer()
         {
             var player = new Player(3);
-            var moveEngine = new DeterministEngine();
-            var game = new Game(new List<Player>() { player }, moveEngine);
+            // var moveEngine = new DeterministEngine();
+            var randomEngineMock = new Mock<IMoveEngine>();
+
+            randomEngineMock.Setup(x => x.Play())
+                .Returns(() => 1);
+            var game = new Game(new List<Player>() { player }, randomEngineMock.Object);
             game.Play();
             Assert.IsTrue(player.Alive);
         }
@@ -107,8 +117,13 @@ namespace WalkGame
         public void TestGameEndAfterThreeIteration()
         {
             var player = new Player(-2);
-            var moveEngine = new DeterministEngine();
-            var game = new Game(new List<Player>() { player }, moveEngine);
+            // var moveEngine = new DeterministEngine();
+            var randomEngineMock = new Mock<IMoveEngine>();
+
+            randomEngineMock.Setup(x => x.Play())
+                .Returns(() => 1);
+
+            var game = new Game(new List<Player>() { player }, randomEngineMock.Object);
             
             for (int i = 0; i < 3; i++)
             {
