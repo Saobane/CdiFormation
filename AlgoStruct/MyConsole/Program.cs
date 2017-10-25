@@ -39,6 +39,7 @@ namespace MyConsole
             Console.WriteLine("Test méthode Get ");
             Console.WriteLine(" la data est {0} et le suivant est {1}", get.data, get.Next.data);
 
+            list.PrintMyLinkedList();
             Console.WriteLine("Suppression à partir du node de 5 ");
             
             list.Remove(new Node<int>(5));
@@ -55,6 +56,13 @@ namespace MyConsole
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine("Test AddAfter \n ");
+
+            myArray.AddAt(2, "586");
+            foreach (var item in myArray)
+            {
+                Console.WriteLine(item);
+            }
 
             Console.ReadLine();
 

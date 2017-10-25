@@ -10,7 +10,7 @@ namespace MyClassLibrary
     public class MyArrayList<T> : IEnumerable
     {
         private int count;
-        public int Count { get { return count; } }
+        public int Count { get { return count;  } private set { count = value; } }
 
         private int tabCapacity;
         private T[] TTab;
@@ -41,6 +41,26 @@ namespace MyClassLibrary
                 TTab[count] = element;
                 count++;
             
+
+        }
+
+        public void  AddAt(int index,T element)
+        {
+            var tabTemp = new T[tabCapacity];
+
+            for (int i = 0; i < index; i++)
+            {
+                tabTemp[i] = TTab[i];
+            }
+            tabTemp[index] = element;
+            count++;
+
+            for (int i = index; i < count; i++)
+            {
+                tabTemp[i+1] = TTab[i];
+
+            }
+            TTab = tabTemp;
 
         }
 
