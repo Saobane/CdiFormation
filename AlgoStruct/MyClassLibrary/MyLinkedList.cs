@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class MyLinkedList<T> 
+    public class MyLinkedList<T> : IMyList<T>
     {
 
         private int count;
@@ -63,24 +63,69 @@ namespace MyClassLibrary
                     {
                         Head = Head.Next;
                     }
+                    
                     //break;  pour supprimer tout les x "element"
                 }
                 precSearchNode = searchNode;
                 tmp = tmp.Next;
-               
 
+                count--;
+            }
+
+        }
+        public void Remove(Node<T> element)
+        {
+            Node<T> tmp = Head;
+            Node<T> precSearchNode = null;
+            Node<T> suivSearchNode = null;
+
+            while (tmp != null)
+            {
+                if (element.data.Equals(tmp.data))
+                {
+
+                    if (precSearchNode != null)
+                    {
+                        precSearchNode.Next = tmp.Next == null ? null:tmp.Next;
+                       
+                    }
+                    else
+                    {
+                        Head = Head.Next;
+                    }
+                }
+                precSearchNode = tmp;
+                tmp = tmp.Next;
+                suivSearchNode = tmp==null ? null:tmp.Next;
+
+                
             }
 
         }
 
-        public T GetNode()
-        {
+        public Node<T> GetNode(T element)
 
-            throw new NotImplementedException();
+        {
+            Node<T> searchNode = Head;
+            Node<T> tmp = Head;
+            while (tmp !=null)
+            {
+                if (tmp.data.Equals(element))
+                {
+                    searchNode = tmp;
+                    break;
+                }
+                else
+                {
+                    tmp = tmp.Next;
+                }
+            }
+
+            return searchNode;
         }
 
        
-        public void PrintNodes()
+        public void PrintMyLinkedList()
         {
             int i = 0;
             var tmp = Head;

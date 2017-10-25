@@ -14,9 +14,9 @@ namespace MyConsole
             
             
 
-            var list = new MyLinkedList<int>();
+            IMyList<int> list = new MyLinkedList<int>();
 
-            list.Add(45);
+            list.Add(-5);
             list.Add(58);
             list.Add(5);
             list.Add(5148);
@@ -25,14 +25,23 @@ namespace MyConsole
             list.Add(578); list.Add(6);
             list.Add(5148);
             Console.WriteLine("Contenu de la Liste ");
-            list.PrintNodes();
+            list.PrintMyLinkedList();
 
             Console.WriteLine("Suppression de 5148 ");
 
             list.Remove(5148);
             Console.WriteLine("Contenu de la Liste ");
 
-            list.PrintNodes();
+            list.PrintMyLinkedList();
+
+            var get=list.GetNode(453);
+            Console.WriteLine("Test méthode Get ");
+            Console.WriteLine(" la data est {0} et le suivant est {1}", get.data, get.Next.data);
+
+            Console.WriteLine("Suppression à partir du node de 58 ");
+
+            list.Remove(new Node<int>(-5));
+            list.PrintMyLinkedList();
 
             Console.ReadLine();
 
