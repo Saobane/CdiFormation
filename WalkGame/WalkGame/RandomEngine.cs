@@ -8,7 +8,7 @@ namespace WalkGame
 {
 public class RandomEngine :  IMoveEngine
     {
-        public int Play()
+        public virtual int Play()
         {
             return Rand.Next(-2, 3);
         }

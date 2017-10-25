@@ -8,12 +8,33 @@ using System.Threading.Tasks;
 namespace ConsoleApp
 {
     delegate int Triple(int[] a);
+    public delegate String[] TestDel(int a, int b);
     delegate T TripleGen<T>(T[] tabGen);
 
     class Program
     {
         static void Main(string[] args)
         {
+
+            TestDel testDel = new TestDel(DelOut);
+
+            TestDel de = delegate (int a, int b)
+            {
+                return new String[] { };
+            };
+
+            int[] tabInt = { 1,2,2,4};
+
+            tabInt.ToList().ForEach(x=> {
+
+                
+
+            });
+
+            var d = Console.ReadLine();
+
+            Console.WriteLine(d);
+
             GeneTest<String> t;
             var tsts = new { Nom = "Sao", Prenom = "Thug" };
             Triple test = x =>
@@ -34,8 +55,14 @@ namespace ConsoleApp
             Console.WriteLine("Triple = {0}", tesft(new int[] { 1,2,14}));
 
             Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
+            int[] tabIent = { 1, 2, 12, 1, 2, 5 };
 
-            int[] tabInt = { 1, 2, 12, 1, 2, 5 };
+            tabIent.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
+
+            foreach (var item in tabIent)
+            {
+
+            }
 
             tabInt.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
             
@@ -49,6 +76,12 @@ namespace ConsoleApp
 
             Console.ReadLine();
 
+        }
+
+       public static String[] DelOut(int a, int b)
+        {
+
+            return new String[] { };
         }
 
         public static System.Collections.IEnumerable Power(int number, int exponent)
