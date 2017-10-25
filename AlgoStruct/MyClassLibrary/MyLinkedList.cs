@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -93,6 +94,7 @@ namespace MyClassLibrary
                     {
                         Head = Head.Next;
                     }
+                    count--;
                 }
                 precSearchNode = tmp;
                 tmp = tmp.Next;
@@ -128,17 +130,30 @@ namespace MyClassLibrary
         public void PrintMyLinkedList()
         {
             int i = 0;
-            var tmp = Head;
-            while (tmp != null)
+            //var tmp = Head;
+            //while (tmp != null)
+            //{
+            //    Console.WriteLine("Index {0} Data : {1}",i, tmp.data);
+            //    tmp = tmp.Next;
+            //    i++;
+            //}
+
+            foreach (var item in this)
             {
-                Console.WriteLine("Index {0} Data : {1}",i, tmp.data);
-                tmp = tmp.Next;
+                Console.WriteLine("Index {0} Data : {1}", i, item);
                 i++;
             }
 
         }
 
-        
-       
+        public IEnumerator GetEnumerator()
+        {
+            var tmp = Head;
+            while (tmp !=null)
+            {
+                yield return tmp.data;
+                tmp = tmp.Next;
+            }
+        }
     }
 }

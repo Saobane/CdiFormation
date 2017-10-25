@@ -1,6 +1,8 @@
-﻿namespace MyClassLibrary
+﻿using System.Collections;
+
+namespace MyClassLibrary
 {
-    public interface IMyList <T>
+    public interface IMyList <T> : IEnumerable
     {
         void Add(T element);
         void Remove(T element);

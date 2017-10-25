@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyClassLibrary;
+using System.Collections;
 
 namespace MyConsole
 {
@@ -38,10 +39,22 @@ namespace MyConsole
             Console.WriteLine("Test méthode Get ");
             Console.WriteLine(" la data est {0} et le suivant est {1}", get.data, get.Next.data);
 
-            Console.WriteLine("Suppression à partir du node de 58 ");
-
-            list.Remove(new Node<int>(-5));
+            Console.WriteLine("Suppression à partir du node de 5 ");
+            
+            list.Remove(new Node<int>(5));
             list.PrintMyLinkedList();
+
+            Console.WriteLine("Test My ArrayList\n ");
+            MyArrayList<string> myArray = new MyArrayList<string>();
+            myArray.Add("14");
+            myArray.Add("16");
+            myArray.Add("18");
+
+            foreach (var item in myArray)
+            {
+                Console.WriteLine(item);
+            }
+
 
             Console.ReadLine();
 
