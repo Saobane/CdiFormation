@@ -39,11 +39,12 @@ namespace ConsoleApp
 
             });
 
+            System.GC.Collect();
+
             var d = Console.ReadLine();
 
             Console.WriteLine(d);
 
-            GeneTest<String> t;
             var tsts = new { Nom = "Sao", Prenom = "Thug" };
             Triple test = x =>
             {
@@ -75,7 +76,6 @@ namespace ConsoleApp
             tabInt.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
             
              Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
-            int[] tz ;
 
             foreach (int i in Power(2, 8))
             {
@@ -106,7 +106,7 @@ namespace ConsoleApp
 
     public class GeneTest<T> where T : IEnumerable
     {
-        T[] tab;
+       // T[] tab;
 
         public T Test(T rt)
         {
