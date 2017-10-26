@@ -15,6 +15,14 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            int[] tableauEntier = {1,2,4,5,8,7,89,6,35,47,85 };
+            IEnumerable <string> s= new []{"tata","toto","tete" };
+
+
+            
+           var r = from e in s where e.EndsWith("") select e;
+           
+            IEnumerable dr = tableauEntier.Where(e => e % 2 == 0).Select(e => e);
 
             TestDel testDel = new TestDel(DelOut);
 
