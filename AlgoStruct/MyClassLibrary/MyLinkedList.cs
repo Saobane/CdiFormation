@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyClassLibrary.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class MyLinkedList<T> : IMyList<T>
+    public class MyLinkedList<T> : IMyLinkedList<T>
     {
 
         private int count;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyClassLibrary.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class MyArrayList<T> : IEnumerable
+    public class MyArrayList<T> : IMyArrayList<T>
     {
         private int count;
         public int Count { get { return count;  } private set { count = value; } }
@@ -64,12 +65,40 @@ namespace MyClassLibrary
 
         }
 
+        //Supprime element du tableau 
+        public void Remove(T element)
+        {
+            if (element != null)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (TTab[i].Equals(element))
+                    {
+                        TTab[i] = TTab[i + 1];
+                        count--;
+                    }
+                }
+            }
+        }
+
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
             {
                 yield return TTab[i];
             }
+        }
+
+        public T get(int index)
+        {
+            if (index >= 0)
+            {
+                return TTab[index];
+            }
+
+            else
+                throw new Exception();                
+            
         }
     }
 }

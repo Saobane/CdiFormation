@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMyList.cs" />
+    <Compile Include="Interfaces\ICustomList.cs" />
+    <Compile Include="Interfaces\IMyArrayList.cs" />
+    <Compile Include="Interfaces\IMyLinkedList.cs" />
     <Compile Include="MyArrayList.cs" />
     <Compile Include="MyLinkedList.cs" />
     <Compile Include="Node.cs" />

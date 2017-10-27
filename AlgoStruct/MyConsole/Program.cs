@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyClassLibrary;
+using MyClassLibrary.Interfaces;
 using System.Collections;
+using MyClassLibrary;
 
 namespace MyConsole
 {
@@ -12,10 +13,10 @@ namespace MyConsole
     {
         static void Main(string[] args)
         {
-            
-            
 
-            IMyList<int> list = new MyLinkedList<int>();
+
+
+            IMyLinkedList<int> list = new MyLinkedList<int>();
 
             list.Add(-5);
             list.Add(58);
