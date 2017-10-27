@@ -9,8 +9,8 @@ namespace MyClassLibrary
     public class NodeTree<T> 
     {
         public T data;
-        private int niveau;
-        public int Niveau { get { return niveau; } private set { niveau = value; } }
+      //  private int niveau;
+       //public int Niveau { get { return niveau; } private set { niveau = value; } }
 
         public NodeTree<T> RightNode { get; set; }
         public NodeTree<T> LeftNode { get; set; }
@@ -22,7 +22,7 @@ namespace MyClassLibrary
             data = inputData;
             RightNode = null;
             LeftNode = null;
-            niveau =0;
+           // niveau =0;
         }
     }
 }

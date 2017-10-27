@@ -11,14 +11,14 @@ namespace MyClassLibrary
    public  class MyBinaryTree<T> : IMyBinaryTree<T> where T :IComparable<T>
     {
         private NodeTree<T> rootNode;
-
-        public NodeTree<T> RootNode { get { return rootNode; } set { rootNode = value; } }
+        
 
         public MyBinaryTree(T rootData)
         {
           
             rootNode = new NodeTree<T>(rootData);
         }
+
         public MyBinaryTree()
         {
 
@@ -92,6 +92,7 @@ namespace MyClassLibrary
         {
             rootNode = Remove(rootNode, element);
         }
+
         public NodeTree<T> Remove(NodeTree<T> node,T element)
         {
             NodeTree<T> cur = node;
