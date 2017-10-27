@@ -42,10 +42,13 @@
   <ItemGroup>
     <Compile Include="Interfaces\ICustomList.cs" />
     <Compile Include="Interfaces\IMyArrayList.cs" />
+    <Compile Include="Interfaces\IMyBinaryTree.cs" />
     <Compile Include="Interfaces\IMyLinkedList.cs" />
     <Compile Include="MyArrayList.cs" />
+    <Compile Include="MyBinaryTree.cs" />
     <Compile Include="MyLinkedList.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="NodeTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

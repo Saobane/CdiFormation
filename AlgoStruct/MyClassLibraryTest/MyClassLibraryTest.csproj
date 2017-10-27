@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyArrayListTest.cs" />
+    <Compile Include="MyBinaryTreeTest.cs" />
     <Compile Include="MyLinkedListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
