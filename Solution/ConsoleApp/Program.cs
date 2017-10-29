@@ -16,6 +16,10 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             int[] tableauEntier = {1,2,4,5,8,7,89,6,35,47,85 };
+
+            tableauEntier.Select(e => e * e * e).ToList().ForEach(x=>Console.WriteLine(x));
+
+            Console.WriteLine("Fin expression Fluent");
             IEnumerable <string> s= new []{"tata","toto","tete" };
 
 
