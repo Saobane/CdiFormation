@@ -15,74 +15,124 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            var e = new[] { "sdds", "dfdfsdf" };
+
+            var d = from et in e
+                    where et != "dfdff"
+                    select e;
+
+
+            Person magnus = new Person { FirstName = "Magnus", LastName = "Hedlund" };
+            Person terry = new Person { FirstName = "Terry", LastName = "Adams" };
+            Person charlotte = new Person { FirstName = "Charlotte", LastName = "Weiss" };
+            Person arlene = new Person { FirstName = "Arlene", LastName = "Huff" };
+            Person rui = new Person { FirstName = "Rui", LastName = "Raposo" };
+
+            Pet barley = new Pet { Name = "Barley", Owner = terry };
+            Pet boots = new Pet { Name = "Boots", Owner = terry };
+            Pet whiskers = new Pet { Name = "Whiskers", Owner = charlotte };
+            Pet bluemoon = new Pet { Name = "Blue Moon", Owner = rui };
+            Pet daisy = new Pet { Name = "Daisy", Owner = magnus };
+
+            // Create two lists.
+            List<Person> people = new List<Person> { magnus, terry, charlotte, arlene, rui };
+            List<Pet> pets = new List<Pet> { barley, boots, whiskers, bluemoon, daisy };
+
+
+            var resultInner = from person in people
+                              where person.FirstName == "SAO"
+                              join pet in pets on person.FirstName equals pet.Owner.FirstName
+                              select new { Name = person.FirstName, PetName = pet.Name };
+
+
+            var restInnerFluent=people.Join(pets,
+                person=>person.FirstName,
+                pet=>pet.Owner.FirstName,
+                (person, pet) =>new { Name = person.FirstName, PetName = pet.Name });
+
+            var resultOuterJdoin= from person in people
+                                  join pet in pets on person.FirstName equals pet.Owner.FirstName into test
+                                  from fr in test.DefaultIfEmpty()
+                                  select new { Name = person.FirstName, PetNames = fr };
+
+            var y = 4;
             int[] tableauEntier = {1,2,4,5,8,7,89,6,35,47,85 };
-            IEnumerable <string> s= new []{"tata","toto","tete" };
+
+            var t=tableauEntier.Select(er => er * er * er).Where(ee => ee > 0);
+
+            var td = from uh in tableauEntier
+                    where uh % 2 == 0
+                    orderby uh
+                    select uh * uh;
 
 
-            
-           var r = from e in s where e.EndsWith("") select e;
-           
-            IEnumerable dr = tableauEntier.Where(e => e % 2 == 0).Select(e => e);
+             // IEnumerable <string> s= new []{"tata","toto","tete" };
 
-            TestDel testDel = new TestDel(DelOut);
 
-            TestDel de = delegate (int a, int b)
-            {
-                return new String[] { };
-            };
 
-            int[] tabInt = { 1,2,2,4};
+             //var r = from e in s where e.EndsWith("") select e;
 
-            tabInt.ToList().ForEach(x=> {
+             // IEnumerable dr = tableauEntier.Where(e => e % 2 == 0).Select(e => e);
 
-                
+             // TestDel testDel = new TestDel(DelOut);
 
-            });
+             // TestDel de = delegate (int a, int b)
+             // {
+             //     return new String[] { };
+             // };
 
-            System.GC.Collect();
+             // int[] tabInt = { 1,2,2,4};
 
-            var d = Console.ReadLine();
+             // tabInt.ToList().ForEach(x=> {
 
-            Console.WriteLine(d);
 
-            var tsts = new { Nom = "Sao", Prenom = "Thug" };
-            Triple test = x =>
-            {
-                int i = 4;
-                foreach (var item in x)
-                {
-                    i = i * item;
-                }
-                return i;
-            };
 
-            Triple tesft = delegate(int[] gt) {
+             // });
 
-                return 4;
+             // System.GC.Collect();
 
-            };
-            Console.WriteLine("Triple = {0}", tesft(new int[] { 1,2,14}));
+             // var d = Console.ReadLine();
 
-            Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
-            int[] tabIent = { 1, 2, 12, 1, 2, 5 };
+             // Console.WriteLine(d);
 
-            tabIent.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
+             // var tsts = new { Nom = "Sao", Prenom = "Thug" };
+             // Triple test = x =>
+             // {
+             //     int i = 4;
+             //     foreach (var item in x)
+             //     {
+             //         i = i * item;
+             //     }
+             //     return i;
+             // };
 
-            foreach (var item in tabIent)
-            {
+             // Triple tesft = delegate(int[] gt) {
 
-            }
+             //     return 4;
 
-            tabInt.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
-            
-             Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
+             // };
+             // Console.WriteLine("Triple = {0}", tesft(new int[] { 1,2,14}));
 
-            foreach (int i in Power(2, 8))
-            {
-                Console.Write("{0} ", i);
-            }
+             // Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
+             // int[] tabIent = { 1, 2, 12, 1, 2, 5 };
 
-            Console.ReadLine();
+             // tabIent.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
+
+             // foreach (var item in tabIent)
+             // {
+
+             // }
+
+             // tabInt.ToList().ForEach(x => Console.WriteLine(x * x * x * x));
+
+             //  Console.WriteLine("{0} {1}", tsts.Nom, tsts.Prenom);
+
+             // foreach (int i in Power(2, 8))
+             // {
+             //     Console.Write("{0} ", i);
+             // }
+
+             Console.ReadLine();
 
         }
 
