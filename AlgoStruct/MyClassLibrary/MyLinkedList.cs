@@ -152,34 +152,13 @@ namespace MyClassLibrary
 
         public void AddAfter(T afterElement, T element)
         {
-            Node<T> tmp = Head;
-            Node<T> searchNode = Head;
-            Node<T> precSearchNode = null;
+            Node<T> newNode = new Node<T>(element);
+            Node<T> afterElementNode = GetNode(afterElement);
 
-            while (tmp != null)
-            {
-                searchNode = tmp;
-                if (afterElement.Equals(tmp.data))
-                {
-
-                    if (tmp.Next != null)
-                    {
-                        precSearchNode.Next = tmp.Next;
-                    }
-                    else
-                    {
-                        Head = Head.Next;
-                    }
-
-                    //break;  pour supprimer tout les x "element"
-                }
-                precSearchNode = searchNode;
-                tmp = tmp.Next;
-
-                count--;
-            }
-
-            count++;        }
+            newNode.Next = afterElementNode.Next;
+            afterElementNode.Next = newNode;
+            count++;
+        }
 
         public void ReverseLinkedList()
         {

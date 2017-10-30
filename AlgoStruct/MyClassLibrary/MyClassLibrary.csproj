@@ -47,6 +47,7 @@
     <Compile Include="MyArrayList.cs" />
     <Compile Include="MyBinaryTree.cs" />
     <Compile Include="MyLinkedList.cs" />
+    <Compile Include="MySortExtensions.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="NodeTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,6 +18,17 @@ namespace MyConsole
 
             IMyLinkedList<int> list = new MyLinkedList<int>();
 
+            int[] df = { 1, 21, 5,45,18,166,2,47 };
+
+            foreach (var item in df)
+            {
+                Console.WriteLine(item);
+            }
+            var refK = df.WordCount();
+            foreach (var item in refK)
+            {
+                Console.WriteLine(item);
+            }
             list.Add(-5);
             list.Add(58);
             list.Add(5);
@@ -28,7 +39,9 @@ namespace MyConsole
             list.Add(5148);
             Console.WriteLine("Contenu de la Liste ");
             list.PrintMyLinkedList();
-            list.ReverseLinkedList();
+            
+            list.AddAfter(5, 666);
+            //list.ReverseLinkedList();
             list.PrintMyLinkedList();
 
             //Console.WriteLine("Suppression de 5148 ");
