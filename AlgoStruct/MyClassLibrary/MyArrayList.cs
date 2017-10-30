@@ -97,7 +97,7 @@ namespace MyClassLibrary
             }
 
             else
-                throw new Exception();                
+                throw new IndexOutOfRangeException();                
             
         }
     }

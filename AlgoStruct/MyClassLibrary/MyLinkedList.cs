@@ -131,13 +131,6 @@ namespace MyClassLibrary
         public void PrintMyLinkedList()
         {
             int i = 0;
-            //var tmp = Head;
-            //while (tmp != null)
-            //{
-            //    Console.WriteLine("Index {0} Data : {1}",i, tmp.data);
-            //    tmp = tmp.Next;
-            //    i++;
-            //}
 
             foreach (var item in this)
             {
@@ -155,6 +148,53 @@ namespace MyClassLibrary
                 yield return tmp.data;
                 tmp = tmp.Next;
             }
+        }
+
+        public void AddAfter(T afterElement, T element)
+        {
+            Node<T> tmp = Head;
+            Node<T> searchNode = Head;
+            Node<T> precSearchNode = null;
+
+            while (tmp != null)
+            {
+                searchNode = tmp;
+                if (afterElement.Equals(tmp.data))
+                {
+
+                    if (tmp.Next != null)
+                    {
+                        precSearchNode.Next = tmp.Next;
+                    }
+                    else
+                    {
+                        Head = Head.Next;
+                    }
+
+                    //break;  pour supprimer tout les x "element"
+                }
+                precSearchNode = searchNode;
+                tmp = tmp.Next;
+
+                count--;
+            }
+
+            count++;        }
+
+        public void ReverseLinkedList()
+        {
+            Node<T> currNode = Head;
+            Node<T> nextNode = null;
+            Node<T> prevNode = null;
+
+            while (currNode != null)
+            {
+                nextNode = currNode.Next;
+                currNode.Next = prevNode;
+                prevNode = currNode;
+                currNode = nextNode;
+            }
+            Head = prevNode;
         }
     }
 }

@@ -62,7 +62,7 @@ namespace MyClassLibraryTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
         public void badGetMethodeUseTest()
         {
             var myArrayList = new MyArrayList<int>();

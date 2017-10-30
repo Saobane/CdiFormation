@@ -16,18 +16,20 @@ namespace MyConsole
 
 
 
-            //IMyLinkedList<int> list = new MyLinkedList<int>();
+            IMyLinkedList<int> list = new MyLinkedList<int>();
 
-            //list.Add(-5);
-            //list.Add(58);
-            //list.Add(5);
-            //list.Add(5148);
-            //list.Add(528); list.Add(8945);
-            //list.Add(5858); list.Add(453);
-            //list.Add(578); list.Add(6);
-            //list.Add(5148);
-            //Console.WriteLine("Contenu de la Liste ");
-            //list.PrintMyLinkedList();
+            list.Add(-5);
+            list.Add(58);
+            list.Add(5);
+            list.Add(5148);
+            list.Add(528); list.Add(8945);
+            list.Add(5858); list.Add(453);
+            list.Add(578); list.Add(6);
+            list.Add(5148);
+            Console.WriteLine("Contenu de la Liste ");
+            list.PrintMyLinkedList();
+            list.ReverseLinkedList();
+            list.PrintMyLinkedList();
 
             //Console.WriteLine("Suppression de 5148 ");
 
@@ -65,34 +67,34 @@ namespace MyConsole
             //    Console.WriteLine(item);
             //}
 
-            var myBinaryTree = new MyBinaryTree<int>();
+            //var myBinaryTree = new MyBinaryTree<int>();
 
-            myBinaryTree.Add(50);
-            myBinaryTree.Add(17);
-            myBinaryTree.Add(23);
-            myBinaryTree.Add(12);
-            myBinaryTree.Add(9);
-            myBinaryTree.Add(14);
-            myBinaryTree.Add(23);
-            myBinaryTree.Add(19);
-            myBinaryTree.Add(72);
-            myBinaryTree.Add(54);
-            myBinaryTree.Add(67);
-            myBinaryTree.Add(76);
+            //myBinaryTree.Add(50);
+            //myBinaryTree.Add(17);
+            //myBinaryTree.Add(23);
+            //myBinaryTree.Add(12);
+            //myBinaryTree.Add(9);
+            //myBinaryTree.Add(14);
+            //myBinaryTree.Add(23);
+            //myBinaryTree.Add(19);
+            //myBinaryTree.Add(72);
+            //myBinaryTree.Add(54);
+            //myBinaryTree.Add(67);
+            //myBinaryTree.Add(76);
 
-            Console.WriteLine("parcours prefix \n ");
-            myBinaryTree.PrefixCourse();
+            //Console.WriteLine("parcours prefix \n ");
+            //myBinaryTree.PrefixCourse();
 
-            Console.WriteLine("parcours infix \n ");
-            myBinaryTree.InfixCourse();
+            //Console.WriteLine("parcours infix \n ");
+            //myBinaryTree.InfixCourse();
 
 
-            Console.WriteLine("parcours suffixe \n ");
-            myBinaryTree.SuffixCourse();
-            Console.WriteLine("Remove 17 \n ");
-            myBinaryTree.Remove(17);
-            Console.WriteLine("parcours prefix \n ");
-            myBinaryTree.PrefixCourse();
+            //Console.WriteLine("parcours suffixe \n ");
+            //myBinaryTree.SuffixCourse();
+            //Console.WriteLine("Remove 17 \n ");
+            //myBinaryTree.Remove(17);
+            //Console.WriteLine("parcours prefix \n ");
+            //myBinaryTree.PrefixCourse();
 
 
             Console.ReadLine();
