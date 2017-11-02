@@ -43,9 +43,12 @@
     <Compile Include="Interfaces\ICustomList.cs" />
     <Compile Include="Interfaces\IMyArrayList.cs" />
     <Compile Include="Interfaces\IMyBinaryTree.cs" />
+    <Compile Include="Interfaces\IMyHashTable.cs" />
     <Compile Include="Interfaces\IMyLinkedList.cs" />
     <Compile Include="MyArrayList.cs" />
     <Compile Include="MyBinaryTree.cs" />
+    <Compile Include="MyHashTable.cs" />
+    <Compile Include="MyHashTableObject.cs" />
     <Compile Include="MyLinkedList.cs" />
     <Compile Include="MySortExtensions.cs" />
     <Compile Include="Node.cs" />

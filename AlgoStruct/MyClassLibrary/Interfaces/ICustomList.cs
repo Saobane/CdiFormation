@@ -7,5 +7,6 @@ namespace MyClassLibrary
         void Add(T element);
         void Remove(T element);
         
+        
     }
 }

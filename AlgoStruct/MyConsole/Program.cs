@@ -14,35 +14,72 @@ namespace MyConsole
         static void Main(string[] args)
         {
 
+            MyHashTable<int, String> hashTable = new MyHashTable<int, string>();
+
+            hashTable.Add(4, "Sao");
+            hashTable.Add(478, "SArrah");
+            hashTable.Add(493, "LOlO");
+
+            Console.WriteLine(hashTable.Count);
+
+            //IMyLinkedList<int> list = new MyLinkedList<int>();
+
+            //int[] df = { 1, 21, 5,45,18,166,2,47 };
+
+            //foreach (var item in df)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //var refK = df.SortBySelection();
+            //Console.WriteLine("Trie \n");
+            //foreach (var item in refK)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //    var ref8K = df.SortByInsertion();
+            //Console.WriteLine("Trie Par insertion\n");
+            //foreach (var item in ref8K)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //var ref78K = df.BubbleSorting();
+            //Console.WriteLine("Trie à bulles \n");
+            //foreach (var item in ref78K)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            ////Console.WriteLine("Trie FUSION \n");
+            ////TriClass.TriFusion(df);
+            ////foreach (var item in df)
+            ////{
+            ////    Console.WriteLine(item);
+            ////}
 
 
-            IMyLinkedList<int> list = new MyLinkedList<int>();
+            //    Console.WriteLine("Trie QuickSort \n");
+            //TriClass.QuickSort(df);
+            //foreach (var item in df)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
-            int[] df = { 1, 21, 5,45,18,166,2,47 };
 
-            foreach (var item in df)
-            {
-                Console.WriteLine(item);
-            }
-            var refK = df.WordCount();
-            foreach (var item in refK)
-            {
-                Console.WriteLine(item);
-            }
-            list.Add(-5);
-            list.Add(58);
-            list.Add(5);
-            list.Add(5148);
-            list.Add(528); list.Add(8945);
-            list.Add(5858); list.Add(453);
-            list.Add(578); list.Add(6);
-            list.Add(5148);
-            Console.WriteLine("Contenu de la Liste ");
-            list.PrintMyLinkedList();
-            
-            list.AddAfter(5, 666);
-            //list.ReverseLinkedList();
-            list.PrintMyLinkedList();
+
+            //list.Add(-5);
+            //list.Add(58);
+            //list.Add(5);
+            //list.Add(5148);
+            //list.Add(528); list.Add(8945);
+            //list.Add(5858); list.Add(453);
+            //list.Add(578); list.Add(6);
+            //list.Add(5148);
+            //Console.WriteLine("Contenu de la Liste ");
+            //list.PrintMyLinkedList();
+
+            //list.AddAfter(5, 666);
+            ////list.ReverseLinkedList();
+            //list.PrintMyLinkedList();
 
             //Console.WriteLine("Suppression de 5148 ");
 

@@ -17,6 +17,7 @@ namespace MyClassLibrary
         {
             Next = null;
             data = t;
+           
 
         }
         
