@@ -47,6 +47,7 @@
     <Compile Include="Interfaces\IMyLinkedList.cs" />
     <Compile Include="MyArrayList.cs" />
     <Compile Include="MyBinaryTree.cs" />
+    <Compile Include="MyFibonacci.cs" />
     <Compile Include="MyHashTable.cs" />
     <Compile Include="MyHashTableObject.cs" />
     <Compile Include="MyLinkedList.cs" />

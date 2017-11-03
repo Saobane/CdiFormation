@@ -34,6 +34,7 @@ namespace MyClassLibrary
             }
             return list; //Complexité O(n²)
         }
+
         public static IEnumerable SortByInsertion<T>(this IEnumerable<T> str) where T : IComparable
         {
             var list = str.ToList();
@@ -79,7 +80,7 @@ namespace MyClassLibrary
 
     public class TriClass
     {
-        static void Fusion<T>(T[] t, int i1, int t1, int t2)  where T: IComparable
+        private static void Fusion<T>(T[] t, int i1, int t1, int t2)  where T: IComparable
         {
             int deb = i1;
             int i2 = i1 + t1;
@@ -126,7 +127,7 @@ namespace MyClassLibrary
         /* par ordre croissant d'un tableau d'entiers    */
         /* des indices indi a indf compris               */
 
-        static void TriFusion<T>(T[] t, int indi, int indf) where T : IComparable
+        private static void TriFusion<T>(T[] t, int indi, int indf) where T : IComparable
         {
             int iMedian;
             T aux;
@@ -166,7 +167,7 @@ namespace MyClassLibrary
             QuickSort(t, 0, t.Length - 1); //Complexité O(n²) dans le pire des cas et n log dans le cas moyen 
 
         }
-        public static void QuickSort<T>(T[] t,int start, int end) where T : IComparable
+        private static void QuickSort<T>(T[] t,int start, int end) where T : IComparable
         {
             if (start<end)
             {

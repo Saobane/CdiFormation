@@ -20,7 +20,16 @@ namespace MyConsole
             hashTable.Add(478, "SArrah");
             hashTable.Add(493, "LOlO");
 
-            Console.WriteLine(hashTable.Count);
+            hashTable.Delete(493);
+
+            Console.WriteLine(hashTable.Count +"\n");
+            for (int i = 0; i < 15; i++)
+            {
+
+                Console.WriteLine("Iterative "+i+"=> "+MyFibonacci.FibonacciIterative(i));
+                Console.WriteLine("Recursive " + i + "=> " + MyFibonacci.FibonacciRecursive(i));
+            }
+
 
             //IMyLinkedList<int> list = new MyLinkedList<int>();
 

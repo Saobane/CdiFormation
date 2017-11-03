@@ -187,6 +187,7 @@ namespace MyClassLibrary
                 if (item.Key.Equals(key))
                 {
                     items.Remove(item);
+                    count--;
                     return;
                 }
             }
