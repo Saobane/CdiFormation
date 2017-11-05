@@ -12,7 +12,7 @@ namespace MyClassLibrary
     {
 
         //Taille par défault du tableau 
-        private const int DEFAULT_ARR_SIZE = 2;
+        private const int DEFAULT_ARR_SIZE = 15;
 
         //Valeur Max d'un tableau
         private const int MAX_ARRAY_LENGTH = 0X7FEFFFFF;
@@ -126,7 +126,7 @@ namespace MyClassLibrary
 
                         arr[i] = oldCollection[i];
                         _size++;
-                        //_insertHelper(oldCollection[i].Key, oldCollection[i].Value);
+                        //Recopier l'ancien  tableau dans un nouveau tableau  
                     }
                 }
             }
