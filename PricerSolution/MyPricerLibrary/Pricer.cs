@@ -33,6 +33,12 @@ namespace MyPricerLibrary
         {
 
             return (nextFlux-pricerDate).TotalDays;
-        } 
+        }
+
+        private DateTime GetNextFlux()
+        {
+
+            return default(DateTime);
+        }
     }
 }
