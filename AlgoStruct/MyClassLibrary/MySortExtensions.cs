@@ -122,10 +122,7 @@ namespace MyClassLibrary
                 t[deb + i] = tf[i];
             }
         }
-
-        /* Fonction de tri par fusion                    */
-        /* par ordre croissant d'un tableau d'entiers    */
-        /* des indices indi a indf compris               */
+        
 
         private static void TriFusion<T>(T[] t, int indi, int indf) where T : IComparable
         {
@@ -153,8 +150,7 @@ namespace MyClassLibrary
             }
         }
 
-        /* Fonction de tri par fusion                    */
-        /* par ordre croissant d'un tableau d'entiers    */
+        /* Tri par fusion par ordre croissant d'un tableau de T    */
 
         public static void TriFusion<T>(T[] t) where T : IComparable
         {
@@ -164,7 +160,7 @@ namespace MyClassLibrary
 
         public static void QuickSort<T>(T[] t) where T : IComparable
         {
-            QuickSort(t, 0, t.Length - 1); //Complexité O(n²) dans le pire des cas et n log dans le cas moyen 
+            QuickSort(t, 0, t.Length - 1); //Complexité O(n²) dans le pire des cas et (n log n)  dans le cas moyen 
 
         }
         private static void QuickSort<T>(T[] t,int start, int end) where T : IComparable

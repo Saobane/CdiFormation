@@ -12,7 +12,7 @@ namespace MyClassLibrary
         {
             int a = 0;
             int b = 1;
-            // In N steps compute Fibonacci sequence iteratively.
+          
             for (int i = 0; i < n; i++)
             {
                 int temp = a;
@@ -23,8 +23,8 @@ namespace MyClassLibrary
         }
         public static int FibonacciRecursive(int n)
         {
-            if (n == 0) return 0; //To return the first Fibonacci number   
-            if (n == 1) return 1; //To return the second Fibonacci number   
+            if (n == 0) return 0; 
+            if (n == 1) return 1;  
             return FibonacciRecursive(n - 1) + FibonacciRecursive(n - 2);
         }
 

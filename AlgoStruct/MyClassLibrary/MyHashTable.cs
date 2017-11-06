@@ -28,7 +28,7 @@ namespace MyClassLibrary
         public int Count { get { return count; } private set { count = value; } }
 
         
-        //Tableau de linkedList pour gérer les collision 
+        //Tableau de linkedList pour gérer les collisions 
         private LinkedList<MyHashTableObject<T, U>>[] arr;
          
 
@@ -62,10 +62,6 @@ namespace MyClassLibrary
                 if (_size >= arr.Length * MAX_LOAD_FACTOR)
                 {
                     ExpandArrayCapacity(arr.Length + 1);
-                }
-                else
-                {
-                   
                 }
                 arr[index] = items;
                 _size++;
