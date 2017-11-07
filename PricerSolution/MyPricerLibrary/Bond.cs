@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace MyPricerLibrary
 {
-    public class Bond
+    public abstract class Bond
     {
+        //Le nominal 
+        public Double Nominal { get; set; }
+        //la maturité
+        public int Maturity { get; set; }
+        //La périodicité
+        public int Périodicity { get; set; }
+        //Date d'émission
+        public DateTime IssueDate { get; set; }
+        //Coupon
+        public double Coupon { get; set; }
     }
 }

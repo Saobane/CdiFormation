@@ -12,14 +12,19 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-
-            var df = new RateRepositoryCsv();
+            
 
             var pricer = new Pricer();
-            pricer.Compute(new LinearInterpolation(), null, new RateRepositoryCsv());
+            Bond bond = new FixedRateBond();
+            bond.Maturity = 2;
+            bond.Périodicity = 6;
+            bond.IssueDate = DateTime.Parse("26/02/1993");
+            bond.Coupon = 2;
+            bond.Nominal = 100;
 
-            var d = df.GetRatesCurve().Where(x=>x.RatesDate==DateTime.Parse("15/03/1993"));
-        
+            var bondPrice =pricer.Compute(new LinearInterpolation(), bond, new RateRepositoryCsv(),DateTime.Parse("20/06/1994"));
+
+            Console.ReadLine();
         }
     }
 }

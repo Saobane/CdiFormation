@@ -8,5 +8,6 @@ namespace MyPricerLibrary
 {
    public  class FixedRateBond : Bond
     {
+      
     }
 }
