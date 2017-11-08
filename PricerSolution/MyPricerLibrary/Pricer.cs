@@ -32,7 +32,10 @@ namespace MyPricerLibrary
             {
                 var gty = 05;
             }
-           
+            if (pricerDate >= bond.IssueDate && pricerDate <= bond.GetLastDate() && RateCurveDatePricer.Count() == 0)
+            {
+                return nextCompute;
+            }
             if ( pricerDate < bond.IssueDate || pricerDate>bond.GetLastDate())
             {
                 return default(double);
@@ -41,10 +44,7 @@ namespace MyPricerLibrary
             {
                  pricerRateCurve = RateCurveDatePricer.First();
             }
-            if (pricerDate >= bond.IssueDate && pricerDate <= bond.GetLastDate() && RateCurveDatePricer.Count() == 0 )
-            {
-                return nextCompute;
-            }
+            
 
 
             if (pricerRateCurve != null)
@@ -81,7 +81,12 @@ namespace MyPricerLibrary
                         alphaMinRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMinV * 100]);
                         alphaMaxRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMaxV * 100]);
                         dynAlpha = interpolation.ComputeRate(alphaMinV, alphaMaxV, alphaMinRateV, alphaMaxRateV, k);
+                        if (dynAlpha==0)
+                        {
+                            return nextCompute;
+                        }
                         //Calcule du Prix
+
                         Po += bond.Coupon / Math.Pow((1 + dynAlpha), k);
 
                         k += (double)bond.Maturity / nbrCoupons;

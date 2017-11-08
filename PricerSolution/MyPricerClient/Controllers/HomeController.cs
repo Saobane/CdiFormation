@@ -19,7 +19,7 @@ namespace MyPricerClient.Controllers
             bond.Maturity = 4;
             bond.Périodicity = 6;
             bond.IssueDate = DateTime.Parse("26/02/1993");
-            bond.Coupon = 8;
+            bond.Coupon = 12;
             bond.Nominal = 100;
             var dates =GetPricingDate(bond,DateTime.Parse("01/01/1993"));
             List<double> prices = new List<double>();
