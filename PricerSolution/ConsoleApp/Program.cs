@@ -22,7 +22,7 @@ namespace ConsoleApp
             bond.Coupon = 2;
             bond.Nominal = 100;
 
-            var bondPrice =pricer.Compute(new LinearInterpolation(), bond, new RateRepositoryCsv(),DateTime.Parse("20/06/1994"));
+            var bondPrice =pricer.Compute(new LinearInterpolation(), bond, new RateRepositoryCsv(),DateTime.Parse("20/08/1993"));//20/09/1993
 
             Console.ReadLine();
         }

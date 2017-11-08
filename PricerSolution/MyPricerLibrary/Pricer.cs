@@ -14,7 +14,16 @@ namespace MyPricerLibrary
 
             var RatesCurves = rateRepository.GetRatesCurve();
             double Po=0;
-            RateCurve pricerRateCurve = RatesCurves.Where(x => x.RatesDate == pricerDate).First();
+            RateCurve pricerRateCurve;
+            var RateCurveDatePricer = RatesCurves.Where(x => x.RatesDate == pricerDate);
+            if (RateCurveDatePricer.Count()==0)
+            {
+                return default(double);
+            }
+            else
+            {
+                 pricerRateCurve = RateCurveDatePricer.First();
+            }
             if (pricerRateCurve != null)
             {
                 var nextFluxDate = GetNextFluxDate(bond, pricerDate);
@@ -24,7 +33,7 @@ namespace MyPricerLibrary
                 var alpha = ComputeAlpha(pricerDate, nextFluxDate);
                 var alphaMin = GetAlphaMin(reelDurations, alpha);
                 var alphaMax = GetAlphaMax(reelDurations, alpha);
-                var alphaMinRate = Convert.ToDouble( pricerRateCurve.Rates[alphaMin * 100]);
+                var alphaMinRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMin * 100]);
                 var alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax*100]);
                 var alphaRate = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, alpha);
 
@@ -32,9 +41,10 @@ namespace MyPricerLibrary
                  Po=0;
                 double k = alpha;
                 double dynAlpha = alphaRate;
-                for (int i = 1; i <= nbrCoupons; i++)
+                var nbr = GetNbrFluxRestant(bond, nextFluxDate);
+                for (int i = 1; i <= nbr; i++)
                 {
-                    if (i !=nbrCoupons)
+                    if (i != nbr)
                     {
                         Po += bond.Coupon / Math.Pow((1 + dynAlpha), k);
                         k += (double)bond.Maturity / nbrCoupons;
@@ -60,7 +70,17 @@ namespace MyPricerLibrary
 
         private double GetAlphaMin(IEnumerable<double> durations,double alpha)
         {
-            return durations.Where(x=>x<alpha).Max();
+            var minsAlpha = durations.Where(x => x < alpha);
+
+            if (minsAlpha.Count()==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return minsAlpha.Max();
+
+            }
         }
         private double GetAlphaMax(IEnumerable<double> durations, double alpha)
         {
@@ -94,7 +114,21 @@ namespace MyPricerLibrary
 
 
         }
+        private int GetNbrFluxRestant(Bond bond, DateTime nextFluxdate)
+        {
+            var issueDate = bond.IssueDate;
+            var lastCoupon = issueDate.AddYears(bond.Maturity);
+            int i = 1;
+            while (nextFluxdate != lastCoupon)
+            {
+                i++;
+                nextFluxdate = nextFluxdate.AddMonths(bond.Périodicity);
+            }
 
+            return i;
+
+
+        }
         private int GetCouponsNumber(Bond bond)
         {
 
