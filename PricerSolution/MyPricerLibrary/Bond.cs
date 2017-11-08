@@ -18,5 +18,11 @@ namespace MyPricerLibrary
         public DateTime IssueDate { get; set; }
         //Coupon
         public double Coupon { get; set; }
+
+        public DateTime GetLastDate() {
+
+            return IssueDate.AddYears(Maturity);
+
+        }
     }
 }

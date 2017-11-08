@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,29 @@ namespace MyPricerLibrary
     {
         private IRateRepository rateRepository;
         private IEnumerable<RateCurve> RatesCurves;
+        private IInterpolation interpolation;
+        private double nextCompute = 0;
 
         public  Pricer()
         {
             rateRepository = new RateRepositoryCsv();
             RatesCurves = rateRepository.GetRatesCurve();
+            interpolation = new LinearInterpolation();
         }
 
 
-        public double Compute(IInterpolation interpolation, Bond bond,DateTime pricerDate)
+        public double Compute( Bond bond,DateTime pricerDate)
         {
             
-            double Po=0;
+            double Po=1;
             RateCurve pricerRateCurve;
             var RateCurveDatePricer = RatesCurves.Where(x => x.RatesDate == pricerDate);
-            if (RateCurveDatePricer.Count()==0 || pricerDate < bond.IssueDate)
+            if (pricerDate==DateTime.Parse("10/03/1993"))
+            {
+                var gty = 05;
+            }
+           
+            if ( pricerDate < bond.IssueDate || pricerDate>bond.GetLastDate())
             {
                 return default(double);
             }
@@ -32,7 +41,12 @@ namespace MyPricerLibrary
             {
                  pricerRateCurve = RateCurveDatePricer.First();
             }
-            
+            if (pricerDate >= bond.IssueDate && pricerDate <= bond.GetLastDate() && RateCurveDatePricer.Count() == 0 )
+            {
+                return nextCompute;
+            }
+
+
             if (pricerRateCurve != null)
             {
                 var nextFluxDate = GetNextFluxDate(bond, pricerDate);
@@ -87,6 +101,11 @@ namespace MyPricerLibrary
 
                
             }
+
+           
+
+           
+            nextCompute = Po;
             return Po;
 
 

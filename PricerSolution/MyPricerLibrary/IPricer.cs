@@ -8,6 +8,6 @@ namespace MyPricerLibrary
 {
    public  interface IPricer
     {
-        double Compute(IInterpolation interpolation, Bond bond,  DateTime pricerDate);
+        double Compute( Bond bond,  DateTime pricerDate);
     }
 }
