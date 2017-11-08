@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPricerLibrary", "MyPricer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{AA237353-F158-441A-86BA-BF5654829A87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPricerClient", "MyPricerClient\MyPricerClient.csproj", "{3E67446D-CCF6-48BB-800E-6C0AD8038E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AA237353-F158-441A-86BA-BF5654829A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA237353-F158-441A-86BA-BF5654829A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA237353-F158-441A-86BA-BF5654829A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E67446D-CCF6-48BB-800E-6C0AD8038E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E67446D-CCF6-48BB-800E-6C0AD8038E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E67446D-CCF6-48BB-800E-6C0AD8038E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E67446D-CCF6-48BB-800E-6C0AD8038E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

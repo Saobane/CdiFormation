@@ -16,13 +16,19 @@ namespace ConsoleApp
 
             var pricer = new Pricer();
             Bond bond = new FixedRateBond();
-            bond.Maturity = 2;
+            bond.Maturity = 4;
             bond.Périodicity = 6;
             bond.IssueDate = DateTime.Parse("26/02/1993");
             bond.Coupon = 2;
             bond.Nominal = 100;
+            var pricerDate = DateTime.Parse("01/01/1993");
+            while (pricerDate !=bond.IssueDate.AddYears(bond.Maturity))
+            {
+                var bondPrice = pricer.Compute(new LinearInterpolation(), bond, pricerDate);//20/09/1993
+                Console.WriteLine("Pricer Date {0} => Price : {1}", pricerDate, bondPrice);
+                pricerDate = pricerDate.AddDays(1);
 
-            var bondPrice =pricer.Compute(new LinearInterpolation(), bond, new RateRepositoryCsv(),DateTime.Parse("20/08/1993"));//20/09/1993
+            }
 
             Console.ReadLine();
         }
