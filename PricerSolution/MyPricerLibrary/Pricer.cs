@@ -17,7 +17,7 @@ namespace MyPricerLibrary
         public  Pricer()
         {
             rateRepository = new RateRepositoryCsv();
-            RatesCurves = rateRepository.GetRatesCurve();
+            RatesCurves = rateRepository.GetRatesCurves();
             interpolation = new LinearInterpolation();
         }
 
@@ -52,13 +52,8 @@ namespace MyPricerLibrary
             {
                 var nextFluxDate = GetNextFluxDate(bond, pricerDate);
 
-                var reelDurations = GetReelDurations(rateRepository.GetHeaderDurations());
+                var reelDurations = GetReelDurations(rateRepository.GetDurations());
                 var alpha = ComputeAlpha(pricerDate, nextFluxDate);
-                //var alphaMin = GetAlphaMin(reelDurations, alpha);
-                //var alphaMax = GetAlphaMax(reelDurations, alpha);
-                //var alphaMinRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMin * 100]);
-                //var alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax*100]);
-                //var alphaRate = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, alpha);
 
                 var nbrCoupons = bond.GetCouponsNumber();
                  Po=0;
@@ -100,7 +95,7 @@ namespace MyPricerLibrary
                         alphaMinRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMin * 100]);
                         alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax * 100]);
                         dynAlpha = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, k);
-                        Po += (bond.Coupon + bond.Nominale) / Math.Pow((1 + dynAlpha), k);
+                        Po += (bond.Coupon + bond.Nominal) / Math.Pow((1 + dynAlpha), k);
                     }
                     
                 }

@@ -11,6 +11,8 @@ namespace MyPricerLibrary
 
         public double ComputeRate(double alphaMin, double alphaMax, double RateMin, double RateMax, double alpha)
         {
+            if ((alphaMax - alphaMin) == 0)
+                throw new IllegalDenominatorException();
 
             double A = (alphaMax - alpha) / (alphaMax - alphaMin);
             double B = (alpha - alphaMin) / (alphaMax - alphaMin);

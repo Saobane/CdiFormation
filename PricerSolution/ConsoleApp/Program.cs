@@ -19,8 +19,8 @@ namespace ConsoleApp
             bond.Maturity = 4;
             bond.Periodicity = 6;
             bond.IssueDate = DateTime.Parse("26/02/1993");
-            bond.Coupon = 8;
-            bond.Nominale = 100;
+            bond.Rate = 0.08;
+            bond.Nominal = 100;
             var pricerDate = DateTime.Parse("01/01/1993");
             while (pricerDate !=bond.IssueDate.AddYears(bond.Maturity).AddDays(2))
             {

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyPricerLibrary
 {
-   public  class FixRateBond : Bond
+    public class FixRateBond : Bond
     {
-      
+        public override double ComputeCoupon()
+        {
+            return Rate * Nominal* DurationBeetweenTwoFlux();
+        }
     }
 }

@@ -13,9 +13,9 @@ namespace MyPricerLibrary
     {
         private const String FilePath = @"C:\Users\sahobau.dasilva\source\Repos\CdiFormationRepo\PricerSolution\MyPricerLibrary\CSV\taux2.csv";
 
-        public List<RateCurve> GetRatesCurve()
+        public List<RateCurve> GetRatesCurves()
         {
-            var durations = GetHeaderDurations();
+            var durations = GetDurations();
 
             var list = new List<RateCurve>();
             String line;
@@ -49,7 +49,7 @@ namespace MyPricerLibrary
         }
 
 
-        public List<double> GetHeaderDurations()
+        public List<double> GetDurations()
         {
             List<double> durations = new List<double>();
             int i = 0;

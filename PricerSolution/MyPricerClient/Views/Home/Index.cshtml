@@ -93,22 +93,22 @@
 {
     <table cellpadding="0" cellspacing="0">
         <tr>
-            <th colspan="2" align="center">Obligation</th>
+            <th colspan="2" align="center">Obligation à taux Fixe</th>
         </tr>
         <tr>
             <td>Valeur nominale: </td>
             <td>
-                @Html.TextBoxFor(m => m.Nominale, new { @Value = Model.Nominale })
+                @Html.TextBoxFor(m => m.Nominal, new { @Value = Model.Nominal })
             </td>
         </tr>
         <tr>
-            <td>Maturité: </td>
+            <td>Maturité (années): </td>
             <td>
                 @Html.TextBoxFor(m => m.Maturity)
             </td>
         </tr>
         <tr>
-            <td>Périodicité: </td>
+            <td>Périodicité (mois): </td>
             <td>
                 @Html.TextBoxFor(m => m.Periodicity)
             </td>
@@ -116,18 +116,24 @@
         <tr>
             <td>Date d'émission: </td>
             <td>
-                @Html.TextBoxFor(m => m.IssueDate)
+                @Html.TextBoxFor(m => m.IssueDate, "{0:dd/MM/yyyy}")
+            </td>
+        </tr>
+        <tr>
+            <td>Taux facial: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Rate)
             </td>
         </tr>
         <tr>
             <td>Coupon: </td>
             <td>
-                @Html.TextBoxFor(m => m.Coupon)
+                @Html.TextBoxFor(m => m.Coupon, new { @Value = Model.Coupon ,@class = "disabled", @readonly = true })
             </td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Submit" /></td>
+            <td><input type="submit" value="Valider" /></td>
         </tr>
     </table>
 }

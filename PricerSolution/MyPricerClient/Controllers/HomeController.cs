@@ -75,8 +75,8 @@ namespace MyPricerClient.Controllers
             bond.Maturity = 4;
             bond.Periodicity = 6;
             bond.IssueDate = DateTime.Parse("20/05/1996");
-            bond.Coupon = 6;
-            bond.Nominale = 100;
+            bond.Rate = 0.06;
+            bond.Nominal = 100;
             return bond;
         }
 
@@ -87,23 +87,27 @@ namespace MyPricerClient.Controllers
             bond.Maturity = clientBond.Maturity;
             bond.Periodicity = clientBond.Periodicity;
             bond.IssueDate = clientBond.IssueDate;
-            bond.Coupon = clientBond.Coupon;
-            bond.Nominale = clientBond.Nominale;
+            bond.Rate = clientBond.Rate;
+            bond.Nominal = clientBond.Nominal;
+
+            // A revoir !!!
+            clientBond.Coupon = bond.Coupon;
             return bond;
 
         }
 
         private List<double> GetBondPrices(BondClient bond)
         {
-            var defaultBond = MapLibraryFixBondWithClientFixBond(bond);
-            var dates = GetPricingDates(defaultBond);
+            var libraryBond = MapLibraryFixBondWithClientFixBond(bond);
+
+            var dates = GetPricingDates(libraryBond);
             List<double> prices = new List<double>();
             double bondPrice;
             var pricer = new Pricer();
 
             foreach (var item in dates)
             {
-                bondPrice = pricer.Compute(defaultBond, DateTime.Parse(item));
+                bondPrice = pricer.Compute(libraryBond, DateTime.Parse(item));
                 prices.Add(bondPrice);
             }
 

@@ -11,7 +11,7 @@ namespace MyPricerClient
     {
         //Le nominal 
         [Required]
-        public Double Nominale { get; set; }
+        public Double Nominal { get; set; }
         //la maturité (nombre d'année)
         [Required]
         public int Maturity { get; set; }
@@ -25,6 +25,7 @@ namespace MyPricerClient
         [Required]
         public double Coupon { get; set; }
 
-       
+        [Required]
+        public double Rate { get; set; }
     }
 }

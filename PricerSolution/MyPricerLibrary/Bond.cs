@@ -9,15 +9,47 @@ namespace MyPricerLibrary
     public abstract class Bond
     {
         //Le nominal 
-        public Double Nominale { get; set; }
+        public Double Nominal { get; set; }
         //la maturité (nombre d'année)
-        public int Maturity { get; set; }
+        private int maturity;
+        public int Maturity
+        {
+            get { return maturity; }
+            set
+            {
+                if (value <=0)
+                {
+                    throw new IllegalEntryException();
+                }
+                else
+                {
+                    maturity = value;
+                }
+            } }
         //La périodicité (nombre de mois)
-        public int Periodicity { get; set; }
+        private int periodicity;
+        public int Periodicity
+        {
+            get { return periodicity; }
+            set
+            {
+                if ((maturity*12) % value   !=0 || value==0)
+                {
+                    throw new IllegalEntryException();
+                }
+                else
+                {
+                    periodicity = value;
+                }
+            } }
         //Date d'émission
         public DateTime IssueDate { get; set; }
         //Coupon
-        public double Coupon { get; set; }
+        public  double Coupon { get { return ComputeCoupon(); } }
+
+        public double Rate { get; set; }
+
+        public abstract  double ComputeCoupon();
 
         public DateTime GetLastDate() {
 

@@ -44,9 +44,11 @@
     <Compile Include="FixRateBond.cs" />
     <Compile Include="FloatingRateNote.cs" />
     <Compile Include="IInterpolation.cs" />
+    <Compile Include="IllegalEntryException.cs" />
     <Compile Include="IPricer.cs" />
     <Compile Include="IRateRepository.cs" />
     <Compile Include="LinearInterpolation.cs" />
+    <Compile Include="IllegalDenominatorException.cs" />
     <Compile Include="Pricer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateCurve.cs" />

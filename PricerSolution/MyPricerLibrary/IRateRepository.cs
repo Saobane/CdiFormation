@@ -8,7 +8,7 @@ namespace MyPricerLibrary
 {
     public interface IRateRepository
     {
-        List<RateCurve> GetRatesCurve();
-        List<double> GetHeaderDurations();
+        List<RateCurve> GetRatesCurves();
+        List<double> GetDurations();
     }
 }
