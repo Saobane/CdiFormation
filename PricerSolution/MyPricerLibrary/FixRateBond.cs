@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPricerLibrary
 {
-   public  class FixedRateBond : Bond
+   public  class FixRateBond : Bond
     {
       
     }

@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bond.cs" />
-    <Compile Include="FixedRateBond.cs" />
+    <Compile Include="FixRateBond.cs" />
     <Compile Include="FloatingRateNote.cs" />
     <Compile Include="IInterpolation.cs" />
     <Compile Include="IPricer.cs" />

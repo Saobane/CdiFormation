@@ -11,66 +11,111 @@ namespace MyPricerClient.Controllers
 {
     public class HomeController : Controller
     {
+         
         public ActionResult Index()
         {
             GC.Collect();
-            var pricer = new Pricer();
-            Bond bond = new FixedRateBond();
-            bond.Maturity = 4;
-            bond.Périodicity = 6;
-            bond.IssueDate = DateTime.Parse("26/02/1993");
-            bond.Coupon = 12;
-            bond.Nominal = 100;
-            var dates =GetPricingDate(bond,DateTime.Parse("01/01/1993"));
-            List<double> prices = new List<double>();
-            //while (pricerDate != bond.IssueDate.AddYears(bond.Maturity))
-            //{
-            //    var bondPrice = pricer.Compute(new LinearInterpolation(), bond, new RateRepositoryCsv(), pricerDate);//20/09/1993
-            //    prices.Add(bondPrice);
-            //    pricerDate = pricerDate.AddDays(1);
+            var defaultBond = GetDefaultBond();
 
-            //}
-            double bondPrice;
-            foreach (var item in dates)
-            {
-                bondPrice = pricer.Compute( bond, DateTime.Parse( item));//20/09/1993
-                prices.Add(bondPrice);
-            }
+            var bondPrices = GetBondPrices(defaultBond);
 
+            SetViewBagForShow(bondPrices);
 
-
-            List<AreaSeriesData> timeData = new List<AreaSeriesData>();
-            prices.ForEach(p => timeData.Add(new AreaSeriesData { Y = p }));
-            ViewBag.TimeData = timeData;
-            ViewBag.DateUTC = MilliTimeStamp(new System.DateTime(1993, 1, 2));
-
-            return View();
+            return View(defaultBond);
 
         }
 
-        private double MilliTimeStamp(DateTime dateTime)
+        [HttpPost]
+        public ActionResult Index(BondClient bondClient)
+        {
+
+            var bondPrices = GetBondPrices(bondClient);
+
+            SetViewBagForShow(bondPrices);
+
+            return View(bondClient);
+        }
+
+        private double MilliTimeStamp()
         {
             DateTime d1 = new DateTime(1970, 1, 1);
-            DateTime d2 = dateTime.ToUniversalTime();
+            DateTime d2 = GetFirstPricingDate().AddDays(1).ToUniversalTime();
             TimeSpan ts = new TimeSpan(d2.Ticks - d1.Ticks);
 
             return ts.TotalMilliseconds;
         }
 
-        private List<string> GetPricingDate(Bond bond,DateTime pricerDate)
+        private List<string> GetPricingDates(Bond bond)
         {
             List<string> dates = new List<string>();
+            DateTime firstPricingDate = GetFirstPricingDate();
 
-            var lastDate = bond.IssueDate.AddYears(bond.Maturity);
+
+            var lastDate = bond.GetLastDate();
 
 
-            while (pricerDate != lastDate)
+            while (firstPricingDate != lastDate.AddDays(1))
             {
-                dates.Add(pricerDate.ToString());
-                pricerDate = pricerDate.AddDays(1);
+                dates.Add(firstPricingDate.ToString());
+                firstPricingDate = firstPricingDate.AddDays(1);
 
             }
             return dates;
+
+        }
+        private DateTime GetFirstPricingDate()
+        {
+
+            return new DateTime(1993, 1, 1);
+        }
+
+        private BondClient GetDefaultBond()
+        {
+            BondClient bond = new BondClient();
+            bond.Maturity = 4;
+            bond.Periodicity = 6;
+            bond.IssueDate = DateTime.Parse("20/05/1996");
+            bond.Coupon = 6;
+            bond.Nominale = 100;
+            return bond;
+        }
+
+        private Bond MapLibraryFixBondWithClientFixBond(BondClient clientBond)
+        {
+            // A revoir !!!
+            var  bond= new FixRateBond();
+            bond.Maturity = clientBond.Maturity;
+            bond.Periodicity = clientBond.Periodicity;
+            bond.IssueDate = clientBond.IssueDate;
+            bond.Coupon = clientBond.Coupon;
+            bond.Nominale = clientBond.Nominale;
+            return bond;
+
+        }
+
+        private List<double> GetBondPrices(BondClient bond)
+        {
+            var defaultBond = MapLibraryFixBondWithClientFixBond(bond);
+            var dates = GetPricingDates(defaultBond);
+            List<double> prices = new List<double>();
+            double bondPrice;
+            var pricer = new Pricer();
+
+            foreach (var item in dates)
+            {
+                bondPrice = pricer.Compute(defaultBond, DateTime.Parse(item));
+                prices.Add(bondPrice);
+            }
+
+            return prices;
+        }
+
+        private void SetViewBagForShow(List<double> bondPrices)
+        {
+            List<AreaSeriesData> timeData = new List<AreaSeriesData>();
+            bondPrices.ForEach(p => timeData.Add(new AreaSeriesData { Y = p }));
+            ViewBag.TimeData = timeData;
+            ViewBag.DateUTC = MilliTimeStamp();
 
         }
     }

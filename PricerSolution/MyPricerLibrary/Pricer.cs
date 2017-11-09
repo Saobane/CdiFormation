@@ -28,15 +28,16 @@ namespace MyPricerLibrary
             double Po=1;
             RateCurve pricerRateCurve;
             var RateCurveDatePricer = RatesCurves.Where(x => x.RatesDate == pricerDate);
-            if (pricerDate==DateTime.Parse("10/03/1993"))
+            if(!PricingDateIsInCsvDateRange(pricerDate))
             {
-                var gty = 05;
+                return default(double);
             }
+
             if (pricerDate >= bond.IssueDate && pricerDate <= bond.GetLastDate() && RateCurveDatePricer.Count() == 0)
             {
                 return nextCompute;
             }
-            if ( pricerDate < bond.IssueDate || pricerDate>bond.GetLastDate())
+            if ( pricerDate < bond.IssueDate || pricerDate>bond.GetLastDate() )
             {
                 return default(double);
             }
@@ -59,7 +60,7 @@ namespace MyPricerLibrary
                 //var alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax*100]);
                 //var alphaRate = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, alpha);
 
-                var nbrCoupons = GetCouponsNumber(bond);
+                var nbrCoupons = bond.GetCouponsNumber();
                  Po=0;
                 double k = alpha;
                 double dynAlpha = 0;
@@ -67,20 +68,20 @@ namespace MyPricerLibrary
 
 
                 #region VAR
-                double alphaMinV ;
-                double alphaMaxV ;
-                double alphaMinRateV ;
-                double alphaMaxRateV;
+                double alphaMin ;
+                double alphaMax ;
+                double alphaMinRate ;
+                double alphaMaxRate;
                 #endregion
                 for (int i = 1; i <= nbr; i++)
                 {
                     if (i != nbr)
                     {
-                        alphaMinV = GetAlphaMin(reelDurations, k);
-                        alphaMaxV = GetAlphaMax(reelDurations, k);
-                        alphaMinRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMinV * 100]);
-                        alphaMaxRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMaxV * 100]);
-                        dynAlpha = interpolation.ComputeRate(alphaMinV, alphaMaxV, alphaMinRateV, alphaMaxRateV, k);
+                        alphaMin = GetAlphaMin(reelDurations, k);
+                        alphaMax = GetAlphaMax(reelDurations, k);
+                        alphaMinRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMin * 100]);
+                        alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax * 100]);
+                        dynAlpha = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, k);
                         if (dynAlpha==0)
                         {
                             return nextCompute;
@@ -89,17 +90,17 @@ namespace MyPricerLibrary
 
                         Po += bond.Coupon / Math.Pow((1 + dynAlpha), k);
 
-                        k += (double)bond.Maturity / nbrCoupons;
+                        k += bond.DurationBeetweenTwoFlux();
                          
                     }
                     else
                     {
-                        alphaMinV = GetAlphaMin(reelDurations, k);
-                        alphaMaxV = GetAlphaMax(reelDurations, k);
-                        alphaMinRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMinV * 100]);
-                        alphaMaxRateV = Convert.ToDouble(pricerRateCurve.Rates[alphaMaxV * 100]);
-                        dynAlpha = interpolation.ComputeRate(alphaMinV, alphaMaxV, alphaMinRateV, alphaMaxRateV, k);
-                        Po += (bond.Coupon + bond.Nominal) / Math.Pow((1 + dynAlpha), k);
+                        alphaMin = GetAlphaMin(reelDurations, k);
+                        alphaMax = GetAlphaMax(reelDurations, k);
+                        alphaMinRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMin * 100]);
+                        alphaMaxRate = Convert.ToDouble(pricerRateCurve.Rates[alphaMax * 100]);
+                        dynAlpha = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, k);
+                        Po += (bond.Coupon + bond.Nominale) / Math.Pow((1 + dynAlpha), k);
                     }
                     
                 }
@@ -144,12 +145,12 @@ namespace MyPricerLibrary
         private DateTime GetNextFluxDate(Bond bond,DateTime pricerdate)
         {
             var issueDate = bond.IssueDate;
-            var nbrCoupons = GetCouponsNumber(bond);
+            var nbrCoupons = bond.GetCouponsNumber();
 
             DateTime tmp= issueDate;
             for (int i = 1; i <= nbrCoupons; i++)
             {
-                tmp = tmp.AddMonths(bond.Périodicity);
+                tmp = tmp.AddMonths(bond.Periodicity);
                 if (tmp > pricerdate)
                 {
                     break;
@@ -168,22 +169,18 @@ namespace MyPricerLibrary
             while (nextFluxdate != lastCoupon)
             {
                 i++;
-                nextFluxdate = nextFluxdate.AddMonths(bond.Périodicity);
+                nextFluxdate = nextFluxdate.AddMonths(bond.Periodicity);
             }
 
             return i;
 
 
         }
-        private int GetCouponsNumber(Bond bond)
-        {
-
-            return (bond.Maturity * 12) / bond.Périodicity;
-        }
+       
 
         private List<double> GetReelDurations(List<double> durations)
         {
-            var tmp = new List<double>(durations.Count);
+            var tmp = new List<double>();
 
             for (int i = 0; i < durations.Count; i++)
             {
@@ -192,6 +189,16 @@ namespace MyPricerLibrary
             }
 
             return tmp;
+        }
+
+        private bool PricingDateIsInCsvDateRange(DateTime pricingDate)
+        {
+            var dates = RatesCurves.Select(x => x.RatesDate);
+            DateTime maxCsvDate = dates.Max();
+            DateTime minCsvDate = dates.Min();
+
+
+            return pricingDate>= minCsvDate && pricingDate<= maxCsvDate;
         }
     }
 }

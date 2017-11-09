@@ -15,12 +15,12 @@ namespace ConsoleApp
             
 
             var pricer = new Pricer();
-            Bond bond = new FixedRateBond();
+            Bond bond = new FixRateBond();
             bond.Maturity = 4;
-            bond.Périodicity = 6;
+            bond.Periodicity = 6;
             bond.IssueDate = DateTime.Parse("26/02/1993");
             bond.Coupon = 8;
-            bond.Nominal = 100;
+            bond.Nominale = 100;
             var pricerDate = DateTime.Parse("01/01/1993");
             while (pricerDate !=bond.IssueDate.AddYears(bond.Maturity).AddDays(2))
             {

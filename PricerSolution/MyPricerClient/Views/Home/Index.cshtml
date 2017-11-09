@@ -13,7 +13,7 @@
             },
             Title = new Title
             {
-                Text = "Prix de L'obligation en le 01/01/1993 et sa date d'échéance"
+                Text = "Prix de L'obligation entre le 01/01/1993 et sa date d'échéance"
             },
             Subtitle = new Subtitle
             {
@@ -34,6 +34,7 @@
                     Title = new YAxisTitle
                     {
                         Text = "Prix de l'obligation"
+
                     },
                     Min=0
                 }
@@ -41,6 +42,10 @@
             Legend = new Legend
             {
                 Enabled = false
+            },
+            Tooltip = new Tooltip
+            {
+                XDateFormat= "%e %b %Y"
             },
             PlotOptions = new PlotOptions
             {
@@ -68,7 +73,7 @@
                 }
             },
             Series = new List<Series>
-            {       
+            {
                 new AreaSeries
                 {
                     Name = "Prix",
@@ -80,3 +85,49 @@
         }
         , "chart")
     )
+
+
+@model MyPricerClient.BondClient
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Obligation</th>
+        </tr>
+        <tr>
+            <td>Valeur nominale: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Nominale, new { @Value = Model.Nominale })
+            </td>
+        </tr>
+        <tr>
+            <td>Maturité: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Maturity)
+            </td>
+        </tr>
+        <tr>
+            <td>Périodicité: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Periodicity)
+            </td>
+        </tr>
+        <tr>
+            <td>Date d'émission: </td>
+            <td>
+                @Html.TextBoxFor(m => m.IssueDate)
+            </td>
+        </tr>
+        <tr>
+            <td>Coupon: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Coupon)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
