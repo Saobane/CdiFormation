@@ -43,13 +43,13 @@ namespace MyPricerLibrary
                 }
             } }
         //Date d'émission
-        public DateTime IssueDate { get; set; }
+        public DateTime IssueDate { get; set;  }
         //Coupon
         public  double Coupon { get { return ComputeCoupon(); } }
 
         public double Rate { get; set; }
 
-        public abstract  double ComputeCoupon();
+        protected abstract  double ComputeCoupon();
 
         public DateTime GetLastDate() {
 
@@ -65,6 +65,49 @@ namespace MyPricerLibrary
         {
 
             return (double)Maturity/GetCouponsNumber();
+        }
+
+        public double GetCouponCouru(DateTime couponCouruDate)
+        {
+            if (couponCouruDate < IssueDate || couponCouruDate> GetLastDate()|| couponCouruDate==null)
+            {
+                return 0;
+            }
+            else
+            {
+                var days = GetDaysSinceLastFlux(couponCouruDate);
+                var periodicityInDays = GetPeriodicityInDays();
+                return Coupon*(days/ periodicityInDays);
+            }
+        }
+        private double GetDaysSinceLastFlux(DateTime couponCouruDate)
+        {
+            var nbrCoupons = GetCouponsNumber();
+
+            DateTime tmp = IssueDate;
+            DateTime lastFlux;
+            for (int i = 1; i <= nbrCoupons; i++)
+            {
+                if (couponCouruDate == tmp)
+                {
+                    return 0;
+                }
+                else if (couponCouruDate < tmp.AddMonths(Periodicity))
+                {
+
+                    lastFlux = tmp;
+                    return (couponCouruDate - lastFlux).TotalDays;
+                }
+                tmp = tmp.AddMonths(Periodicity);
+
+            }
+
+            return 0;
+
+        }
+        private double GetPeriodicityInDays()
+        {
+            return (double) 365 * periodicity / 12;
         }
     }
 }

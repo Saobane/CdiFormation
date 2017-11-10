@@ -11,15 +11,22 @@ namespace MyPricerClient.Controllers
 {
     public class HomeController : Controller
     {
-         
+        IPricer pricer;
+
+
+         public HomeController()
+        {
+            pricer = new Pricer();
+        }
         public ActionResult Index()
         {
             GC.Collect();
             var defaultBond = GetDefaultBond();
 
             var bondPrices = GetBondPrices(defaultBond);
+            var couponsCouru = GetCouponsCouru(defaultBond);
 
-            SetViewBagForShow(bondPrices);
+            SetViewBagForShow(bondPrices,couponsCouru);
 
             return View(defaultBond);
 
@@ -31,7 +38,9 @@ namespace MyPricerClient.Controllers
 
             var bondPrices = GetBondPrices(bondClient);
 
-            SetViewBagForShow(bondPrices);
+            var couponsCouru = GetCouponsCouru(bondClient);
+
+            SetViewBagForShow(bondPrices, couponsCouru);
 
             return View(bondClient);
         }
@@ -80,7 +89,7 @@ namespace MyPricerClient.Controllers
             return bond;
         }
 
-        private Bond MapLibraryFixBondWithClientFixBond(BondClient clientBond)
+        private Bond MapClientFixBondWithLibraryFixBond(BondClient clientBond)
         {
             // A revoir !!!
             var  bond= new FixRateBond();
@@ -98,12 +107,12 @@ namespace MyPricerClient.Controllers
 
         private List<double> GetBondPrices(BondClient bond)
         {
-            var libraryBond = MapLibraryFixBondWithClientFixBond(bond);
+            var libraryBond = MapClientFixBondWithLibraryFixBond(bond);
 
             var dates = GetPricingDates(libraryBond);
             List<double> prices = new List<double>();
             double bondPrice;
-            var pricer = new Pricer();
+            
 
             foreach (var item in dates)
             {
@@ -114,11 +123,31 @@ namespace MyPricerClient.Controllers
             return prices;
         }
 
-        private void SetViewBagForShow(List<double> bondPrices)
+        private List<double> GetCouponsCouru(BondClient bond)
+        {
+            var libraryBond = MapClientFixBondWithLibraryFixBond(bond);
+
+            var dates = GetPricingDates(libraryBond);
+            List<double> couponsCouru = new List<double>();
+
+            foreach (var item in dates)
+            {
+                couponsCouru.Add(libraryBond.GetCouponCouru(item));
+            }
+
+            return couponsCouru;
+        }
+
+        private void SetViewBagForShow(List<double> bondPrices, List<double> couponsCouru)
         {
             List<AreaSeriesData> timeData = new List<AreaSeriesData>();
             bondPrices.ForEach(p => timeData.Add(new AreaSeriesData { Y = p }));
+
+            List<AreaSeriesData> timeData1 = new List<AreaSeriesData>();
+            couponsCouru.ForEach(p => timeData1.Add(new AreaSeriesData { Y = p }));
             ViewBag.TimeData = timeData;
+            ViewBag.TimeData1 = timeData1;
+
             ViewBag.DateUTC = MilliTimeStamp();
 
         }

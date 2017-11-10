@@ -8,7 +8,7 @@ namespace MyPricerLibrary
 {
     public class FloatingRateNote : Bond
     {
-        public override double ComputeCoupon()
+        protected override double ComputeCoupon()
         {
             throw new NotImplementedException();
         }

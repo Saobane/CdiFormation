@@ -39,7 +39,27 @@ namespace MyPricerLibrary.Test
         [TestMethod]
         public void ComputeFixBondCouponIsOK()
         {
-            Assert.AreEqual(FixBond.ComputeCoupon(),3);
+            Assert.AreEqual(FixBond.Coupon,3);
+        }
+
+        [TestMethod]
+        public void ComputeCouponCouruIsOKForCouponsDate()
+        {
+            var couponCouru =FixBond.GetCouponCouru(DateTime.Parse("20/11/1996"));
+         Assert.AreEqual(couponCouru, 0);
+        }
+        [TestMethod]
+        public void ComputeCouponCouruIsOKAnyDate()
+        {
+            var couponCouru = FixBond.GetCouponCouru(DateTime.Parse("26/11/1996"));
+            Assert.IsNotNull(couponCouru);
+        }
+
+        [TestMethod]
+        public void ComputeCouponCouruForDateInOutOfBondRangeDuration()
+        {
+            var couponCouru = FixBond.GetCouponCouru(DateTime.Parse("26/11/2017"));
+            Assert.AreEqual(couponCouru, 0);
         }
     }
 }

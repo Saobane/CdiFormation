@@ -8,7 +8,7 @@ namespace MyPricerLibrary
 {
     public class FixRateBond : Bond
     {
-        public override double ComputeCoupon()
+        protected override double ComputeCoupon()
         {
             return Rate * Nominal* DurationBeetweenTwoFlux();
         }

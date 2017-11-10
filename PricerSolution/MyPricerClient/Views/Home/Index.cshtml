@@ -36,12 +36,36 @@
                         Text = "Prix de l'obligation"
 
                     },
+                    Labels = new YAxisLabels
+                    {
+                        Align = YAxisLabelsAlign.Right ,
+                        X = 3,
+                        Y = 16,
+                        //Format = "{value:.,0f}"
+                    },
+                    ShowFirstLabel = false,
                     Min=0
+                },
+                 new YAxis
+                {
+                    Title = new YAxisTitle
+                    {
+                        Text = "Coupons Couru"
+
+                    },
+                     Labels = new YAxisLabels
+                    {
+                        Align = YAxisLabelsAlign.Left ,
+                        X = 3,
+                        Y = 16,
+                        //Format = "{value:.,0f}"
+                    },
+                    Min=0,Opposite=true
                 }
             },
             Legend = new Legend
             {
-                Enabled = false
+                Enabled = true
             },
             Tooltip = new Tooltip
             {
@@ -76,10 +100,16 @@
             {
                 new AreaSeries
                 {
-                    Name = "Prix",
+                    Name = "Prix de l'obligation",
                     PointInterval =  24 * 3600 * 1000,
                     PointStart =  @ViewBag.DateUTC,
                     Data = @ViewBag.TimeData as List<AreaSeriesData>
+                },new AreaSeries
+                {
+                    Name = "Coupon Couru",
+                    PointInterval =  24 * 3600 * 1000,
+                    PointStart =  @ViewBag.DateUTC,
+                    Data = @ViewBag.TimeData1 as List<AreaSeriesData>
                 }
             }
         }
