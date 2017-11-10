@@ -83,7 +83,7 @@ namespace MyPricerClient.Controllers
             BondClient bond = new BondClient();
             bond.Maturity = 4;
             bond.Periodicity = 6;
-            bond.IssueDate = DateTime.Parse("20/05/1996");
+            bond.IssueDate = DateTime.Parse("20/05/1993");
             bond.Rate = 0.06;
             bond.Nominal = 100;
             return bond;

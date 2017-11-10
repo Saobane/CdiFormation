@@ -14,14 +14,16 @@ namespace MyPricerLibrary
         private IInterpolation interpolation;
         private double prevBondPrice = 0;
 
-        public  Pricer()
+        public  Pricer() :this(new RateRepositoryCsv(), new LinearInterpolation())
         {
-            rateRepository = new RateRepositoryCsv();
-            RatesCurves = rateRepository.GetRatesCurves();
-            interpolation = new LinearInterpolation();
         }
 
-
+        public Pricer(IRateRepository _rateRepository, IInterpolation _interpolation)
+        {
+            rateRepository= _rateRepository;
+            RatesCurves = rateRepository.GetRatesCurves();
+            interpolation = _interpolation;
+        }
         public double Compute( Bond bond,DateTime pricerDate)
         {
 
