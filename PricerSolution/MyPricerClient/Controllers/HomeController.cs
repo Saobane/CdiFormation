@@ -45,9 +45,9 @@ namespace MyPricerClient.Controllers
             return ts.TotalMilliseconds;
         }
 
-        private List<string> GetPricingDates(Bond bond)
+        private List<DateTime> GetPricingDates(Bond bond)
         {
-            List<string> dates = new List<string>();
+            List<DateTime> dates = new List<DateTime>();
             DateTime firstPricingDate = GetFirstPricingDate();
 
 
@@ -56,7 +56,7 @@ namespace MyPricerClient.Controllers
 
             while (firstPricingDate != lastDate.AddDays(1))
             {
-                dates.Add(firstPricingDate.ToString());
+                dates.Add(firstPricingDate);
                 firstPricingDate = firstPricingDate.AddDays(1);
 
             }
@@ -107,7 +107,7 @@ namespace MyPricerClient.Controllers
 
             foreach (var item in dates)
             {
-                bondPrice = pricer.Compute(libraryBond, DateTime.Parse(item));
+                bondPrice = pricer.Compute(libraryBond, item);
                 prices.Add(bondPrice);
             }
 

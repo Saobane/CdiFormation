@@ -15,6 +15,7 @@ namespace MyPricerLibrary.Test
             FixBond.Periodicity = 6;
 
             FixBond.Maturity = 4;
+
             FixBond.IssueDate = DateTime.Parse("20/05/1996");
             FixBond.Rate = 0.06;
             FixBond.Nominal = 100;

@@ -12,7 +12,7 @@ namespace MyPricerLibrary
         private IRateRepository rateRepository;
         private IEnumerable<RateCurve> RatesCurves;
         private IInterpolation interpolation;
-        private double nextCompute = 0;
+        private double prevBondPrice = 0;
 
         public  Pricer()
         {
@@ -35,7 +35,7 @@ namespace MyPricerLibrary
 
             if (pricerDate >= bond.IssueDate && pricerDate <= bond.GetLastDate() && RateCurveDatePricer.Count() == 0)
             {
-                return nextCompute;
+                return prevBondPrice;
             }
             if ( pricerDate < bond.IssueDate || pricerDate>bond.GetLastDate() )
             {
@@ -79,7 +79,7 @@ namespace MyPricerLibrary
                         dynAlpha = interpolation.ComputeRate(alphaMin, alphaMax, alphaMinRate, alphaMaxRate, k);
                         if (dynAlpha==0)
                         {
-                            return nextCompute;
+                            return prevBondPrice;
                         }
                         //Calcule du Prix
 
@@ -106,7 +106,7 @@ namespace MyPricerLibrary
            
 
            
-            nextCompute = Po;
+            prevBondPrice = Po;
             return Po;
 
 
