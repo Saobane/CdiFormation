@@ -13,22 +13,23 @@ namespace MyConsole
     {
         static void Main(string[] args)
         {
+            
 
-            MyHashTable<int, String> hashTable = new MyHashTable<int, string>();
+            //MyHashTable<int, String> hashTable = new MyHashTable<int, string>();
 
-            hashTable.Add(4, "Sao");
-            hashTable.Add(478, "SArrah");
-            hashTable.Add(493, "LOlO");
+            //hashTable.Add(4, "Sao");
+            //hashTable.Add(478, "SArrah");
+            //hashTable.Add(493, "LOlO");
 
-            hashTable.Delete(493);
+            //hashTable.Delete(493);
 
-            Console.WriteLine(hashTable.Count +"\n");
-            for (int i = 0; i < 15; i++)
-            {
+            //Console.WriteLine(hashTable.Count +"\n");
+            //for (int i = 0; i < 15; i++)
+            //{
 
-                Console.WriteLine("Iterative "+i+"=> "+MyFibonacci.FibonacciIterative(i));
-                Console.WriteLine("Recursive " + i + "=> " + MyFibonacci.FibonacciRecursive(i));
-            }
+            //    Console.WriteLine("Iterative "+i+"=> "+MyFibonacci.FibonacciIterative(i));
+            //    Console.WriteLine("Recursive " + i + "=> " + MyFibonacci.FibonacciRecursive(i));
+            //}
 
 
             //IMyLinkedList<int> list = new MyLinkedList<int>();
