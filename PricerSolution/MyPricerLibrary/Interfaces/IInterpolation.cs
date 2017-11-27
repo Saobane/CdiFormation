@@ -11,4 +11,5 @@ namespace MyPricerLibrary
         //alpha : Durée entre la date de pricing et le prochain flux
         double ComputeRate(double alphaMin,double alphaMax,double tauxMin,double tauxMax,double alpha);
     }
+    
 }

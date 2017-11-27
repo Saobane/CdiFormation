@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPricerClient", "MyPricerC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPricerLibrary.Test", "MyPricerLibrary.Test\MyPricerLibrary.Test.csproj", "{83912AF9-8809-4427-A33F-5E5AC81A5FB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPricerClientWPF", "MyPricerClientWPF\MyPricerClientWPF.csproj", "{C390E0E0-93EF-423B-8F6B-C0A2C970E8E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{83912AF9-8809-4427-A33F-5E5AC81A5FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83912AF9-8809-4427-A33F-5E5AC81A5FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83912AF9-8809-4427-A33F-5E5AC81A5FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C390E0E0-93EF-423B-8F6B-C0A2C970E8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C390E0E0-93EF-423B-8F6B-C0A2C970E8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C390E0E0-93EF-423B-8F6B-C0A2C970E8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C390E0E0-93EF-423B-8F6B-C0A2C970E8E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
