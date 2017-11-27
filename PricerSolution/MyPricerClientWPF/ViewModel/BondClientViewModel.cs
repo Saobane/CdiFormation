@@ -21,9 +21,9 @@ namespace MyPricerClientWPF.ViewModel
 
         {
             pricer = new Pricer();
-            var defaultBond = GetDefaultBond();
-            var bondPrices = GetBondPrices(defaultBond);
-            var bondDates = GetPricingDates(MapClientFixBondWithLibraryFixBond(defaultBond)); ;
+            BondCLient = GetDefaultBond();
+            var bondPrices = GetBondPrices(BondCLient);
+            var bondDates = GetPricingDates(MapClientFixBondWithLibraryFixBond(BondCLient)); ;
 
 
 
