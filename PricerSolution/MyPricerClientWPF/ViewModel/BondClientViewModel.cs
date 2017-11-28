@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MyPricerClientWPF.ViewModel
 {
@@ -22,6 +23,13 @@ namespace MyPricerClientWPF.ViewModel
         {
             pricer = new Pricer();
             BondCLient = GetDefaultBond();
+            SetMyView(BondCLient);
+
+
+        }
+
+        private void SetMyView(BondClient bondClient)
+        {
             var bondPrices = GetBondPrices(BondCLient);
             var bondDates = GetPricingDates(MapClientFixBondWithLibraryFixBond(BondCLient)); ;
 
@@ -32,7 +40,7 @@ namespace MyPricerClientWPF.ViewModel
             Model.Title = "Pricer";
             Model.Subtitle = "using OxyPlot ";
 
-        var series1 = new LineSeries();
+            var series1 = new LineSeries();
             series1.Title = "Series 1";
             series1.MarkerType = MarkerType.Circle;
 
@@ -46,16 +54,16 @@ namespace MyPricerClientWPF.ViewModel
             Model.Series.Add(series1);
         }
 
-        
+        private PlotModel model;
 
-        public PlotModel Model { get; set; }
+        public PlotModel Model { get { return model; } set { model = value; NotifyPropertyChanged("Model"); } }
         
 
         private BondClient _bondClient;
 
         public BondClient BondCLient
         {
-            get { return _bondClient; }
+            get {  return _bondClient;  }
             set { _bondClient = value; NotifyPropertyChanged("BondClient"); }
         }
 
@@ -137,6 +145,46 @@ namespace MyPricerClientWPF.ViewModel
             return dates;
 
         }
+
+        private ICommand mUpdater;
+        public ICommand UpdateCommand
+        {
+            get
+            {
+                if (mUpdater == null) { 
+                    mUpdater = new Updater();
+                    mUpdater.CanExecuteChanged += MUpdater_CanExecuteChanged;
+                }
+                return mUpdater;
+            }
+            set
+            {
+                mUpdater = value;
+            }
+        }
+
+        private void MUpdater_CanExecuteChanged(object sender, EventArgs e)
+        {
+            SetMyView(BondCLient);
+            Model.InvalidatePlot(true);
+        }
+
+        private class Updater : ICommand
+        {
+            #region ICommand Members
+
+            public bool CanExecute(object parameter)
+            {
+                return true;
+            }
+            public event EventHandler CanExecuteChanged;
+            public void Execute(object parameter)
+            {
+                CanExecuteChanged(this, new EventArgs());
+            }
+            #endregion
+        }
+
 
 
     }

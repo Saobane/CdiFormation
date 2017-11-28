@@ -13,19 +13,19 @@
     <Grid>
     
     <Grid HorizontalAlignment="Left" Height="255" Margin="20,180,0,0" VerticalAlignment="Top" Width="477">
-        <oxy:PlotView  Model="{Binding Model}"/>
+        <oxy:PlotView  Model="{Binding Model, Mode=TwoWay}"/>
     </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="20,24,0,0" TextWrapping="Wrap" Text="Valeur nominale:" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding BondCLient.Nominal}" HorizontalAlignment="Left" Height="23" Margin="113,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding  BondCLient.Nominal, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="113,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="12,52,0,0" TextWrapping="Wrap" Text="Maturité (années):" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding BondCLient.Maturity}" HorizontalAlignment="Left" Height="23" Margin="113,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding BondCLient.Maturity, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="113,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="14,84,0,0" TextWrapping="Wrap" Text="Périodicité (mois):" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding BondCLient.Periodicity}" HorizontalAlignment="Left" Height="23" Margin="113,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding BondCLient.Periodicity, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="113,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="21,119,0,0" TextWrapping="Wrap" Text="Date d'émission:" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding BondCLient.IssueDate, StringFormat=dd/MM/yyyy}" HorizontalAlignment="Left" Height="23" Margin="113,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding BondCLient.IssueDate, StringFormat=dd/MM/yyyy, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="113,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,148,0,0" TextWrapping="Wrap" Text="Taux facial:" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding BondCLient.Rate}" HorizontalAlignment="Left" Height="23" Margin="113,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="259,149,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+        <TextBox Text="{Binding BondCLient.Rate, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="113,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="259,149,0,0" VerticalAlignment="Top" Width="99" Command="{Binding Path=UpdateCommand}" />
 
     </Grid>
 
