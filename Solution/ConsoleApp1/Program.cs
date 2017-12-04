@@ -13,31 +13,37 @@ namespace ConsoleApp1
         {
             
 
-            var n = new { A="dededed",dedede=4};
+            //var n = new { A="dededed",dedede=4};
           
-            IInterface test1 = new MyClass1();
-            IInterface test2 = new MyClass2();
-            MyClass test3 = new MyClass();
-            test1.MethodTest();
-            test2.MethodTest();
-            test3.MethodTest();//ff
+            //IInterface test1 = new MyClass1();
+            //IInterface test2 = new MyClass2();
+            //MyClass test3 = new MyClass();
+            //test1.MethodTest();
+            //test2.MethodTest();
+            //test3.MethodTest();//ff
 
-            Console.WriteLine("exemple somme= {0}", test3.Add<String>("DA SILVA", "FRED"));
+            //Console.WriteLine("exemple somme= {0}", test3.Add<String>("DA SILVA", "FRED"));
 
-            Triple test = delegate (int i) { return 8; };
+            //Triple test = delegate (int i) { return 8; };
 
-            Console.WriteLine(test(5));
+            //Console.WriteLine(test(5));
 
 
             MyClass<MyClass1> fr = new MyClass<MyClass1>();
-            fr.Maclasse = (MyClass1)test1;
-            Console.WriteLine( fr.ToString());
+            //fr.Maclasse = (MyClass1)test1;
+            //Console.WriteLine( fr.ToString());
+            Console.WriteLine(fr.fibo(10)+"\n");
+            foreach (var item in fr.YielD(10))
+            {
+                Console.WriteLine(item);
+
+            }
 
 
-            int[] tab = { 1, 4, 2, 5, 8, 5, 48, 4 };
+            //int[] tab = { 1, 4, 2, 5, 8, 5, 48, 4 };
 
-            Array.ForEach<int>(tab, delegate (int a) { Console.WriteLine(a * a); });
-           // tab.ForEach<int>(delegate (int a) { Console.WriteLine(a * a); });
+            //Array.ForEach<int>(tab, delegate (int a) { Console.WriteLine(a * a); });
+            // tab.ForEach<int>(delegate (int a) { Console.WriteLine(a * a); });
 
             Console.ReadLine();
         }
@@ -90,6 +96,27 @@ namespace ConsoleApp1
         public override string ToString()
         {
             return "T est de type :"+maclass.GetType();
+        }
+
+        public   int fibo(int n)
+        {
+            if (n == 0)
+                return 0;
+            if (n == 1)
+                return 1;
+
+
+            return fibo(n - 2) + fibo(n - 1);
+
+        }
+        public IEnumerable<int> YielD(int n)
+        {
+            while (n>0)
+            {
+                yield return n * 2;
+            }
+            
+
         }
     }
 }
