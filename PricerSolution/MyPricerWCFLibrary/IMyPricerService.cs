@@ -12,8 +12,11 @@ namespace MyPricerWCFLibrary
     {
         [OperationContract]
         double Compute(BondWcf bond, DateTime pricerDate);
-        
+        [OperationContract]
+        Dictionary<DateTime, double> ComputeToBondLastDate(BondWcf bond);
+
+
     }
 
-  
+
 }

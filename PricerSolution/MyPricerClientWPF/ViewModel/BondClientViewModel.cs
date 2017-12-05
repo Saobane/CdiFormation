@@ -1,5 +1,5 @@
 ﻿using MyPricerClientWPF.Model;
-using MyPricerLibrary;
+using MyPricerClientWPF.MyPricerService;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -15,13 +15,13 @@ namespace MyPricerClientWPF.ViewModel
 {
     public class BondClientViewModel : INotifyPropertyChanged
     {
-        IPricer pricer;
+        MyPricerService.MyPricerServiceClient client;
+
 
         public BondClientViewModel()
-
-
         {
-            pricer = new Pricer();
+            client =new  MyPricerService.MyPricerServiceClient();
+            
             BondCLient = GetDefaultBond();
             SetMyView(BondCLient);
 
@@ -30,8 +30,9 @@ namespace MyPricerClientWPF.ViewModel
 
         private void SetMyView(BondClient bondClient)
         {
-            var bondPrices = GetBondPrices(BondCLient);
-            var bondDates = GetPricingDates(MapClientFixBondWithLibraryFixBond(BondCLient)); ;
+            var bondDateAndPrices = client.ComputeToBondLastDate(MapClientFixBondWithLibraryFixBond(BondCLient));
+            var bondPrices = bondDateAndPrices.Values.ToArray();
+            var bondDates = bondDateAndPrices.Keys.ToArray();
 
 
 
@@ -44,7 +45,7 @@ namespace MyPricerClientWPF.ViewModel
             series1.Title = "Series 1";
             series1.MarkerType = MarkerType.Circle;
 
-            for (int i = 0; i < bondPrices.Count; i++)
+            for (int i = 0; i < bondDateAndPrices.Count; i++)
             {
                 series1.Points.Add(new DataPoint(DateTimeAxis.ToDouble(bondDates[i]), bondPrices[i]));
             }
@@ -90,27 +91,33 @@ namespace MyPricerClientWPF.ViewModel
             return bond;
         }
 
-        private List<double> GetBondPrices(BondClient bond)
-        {
-            var libraryBond = MapClientFixBondWithLibraryFixBond(bond);
+        //private List<double> GetBondPrices(BondClient bond)
+        //{
+        //    var libraryBond = MapClientFixBondWithLibraryFixBond(bond);
 
-            var dates = GetPricingDates(libraryBond);
-            List<double> prices = new List<double>();
-            double bondPrice;
+        //    var dates = GetPricingDates(libraryBond);
+        //    List<double> prices = new List<double>();
+        //    double bondPrice;
+        //    int i = 0;
 
+        //    foreach (var item in dates)
+        //    {
+        //        bondPrice = client.Compute(libraryBond, item);
+        //        prices.Add(bondPrice);
+        //        i++;
+        //        if (i==30)
+        //        {
 
-            foreach (var item in dates)
-            {
-                bondPrice = pricer.Compute(libraryBond, item);
-                prices.Add(bondPrice);
-            }
+        //        }
 
-            return prices;
-        }
-        private Bond MapClientFixBondWithLibraryFixBond(BondClient clientBond)
+        //    }
+
+        //    return prices;
+        //}
+        private BondWcf MapClientFixBondWithLibraryFixBond(BondClient clientBond)
         {
             // A revoir !!!
-            var bond = new FixRateBond();
+            var bond = new BondWcf();
             bond.Maturity = clientBond.Maturity;
             bond.Periodicity = clientBond.Periodicity;
             bond.IssueDate = clientBond.IssueDate;
@@ -127,24 +134,24 @@ namespace MyPricerClientWPF.ViewModel
         }
 
 
-        private List<DateTime> GetPricingDates(Bond bond)
-        {
-            List<DateTime> dates = new List<DateTime>();
-            DateTime firstPricingDate = GetFirstPricingDate();
+        //private List<DateTime> GetPricingDates(BondWcf bond)
+        //{
+        //    List<DateTime> dates = new List<DateTime>();
+        //    DateTime firstPricingDate = GetFirstPricingDate();
 
 
-            var lastDate = bond.GetLastDate();
+        //    var lastDate = client.GetLastDate(bond);
 
 
-            while (firstPricingDate != lastDate.AddDays(1))
-            {
-                dates.Add(firstPricingDate);
-                firstPricingDate = firstPricingDate.AddDays(1);
+        //    while (firstPricingDate != lastDate.AddDays(1))
+        //    {
+        //        dates.Add(firstPricingDate);
+        //        firstPricingDate = firstPricingDate.AddDays(1);
 
-            }
-            return dates;
+        //    }
+        //    return dates;
 
-        }
+        //}
 
         private ICommand mUpdater;
         public ICommand UpdateCommand
