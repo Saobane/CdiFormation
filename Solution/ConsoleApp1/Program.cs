@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -11,10 +12,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            
+
 
             //var n = new { A="dededed",dedede=4};
-          
+
             //IInterface test1 = new MyClass1();
             //IInterface test2 = new MyClass2();
             //MyClass test3 = new MyClass();
@@ -28,16 +29,26 @@ namespace ConsoleApp1
 
             //Console.WriteLine(test(5));
 
+            //Console.WriteLine("Core :"+Environment.ProcessorCount);
 
+            //for (int i = 0; i < Environment.ProcessorCount; i++)
+            //{
+            //    while (true)
+            //    {
+            //        Thread thr = new Thread(test);
+
+            //        thr.Start();
+            //    }
+            //}
             MyClass<MyClass1> fr = new MyClass<MyClass1>();
             //fr.Maclasse = (MyClass1)test1;
-            //Console.WriteLine( fr.ToString());
-            Console.WriteLine(fr.fibo(10)+"\n");
-            foreach (var item in fr.YielD(10))
-            {
-                Console.WriteLine(item);
+            //Console.WriteLine(fr.ToString());
+            Console.WriteLine(fr.fiboIte(120) + "\n");
+            //foreach (var item in fr.YielD(10))
+            //{
+            //    Console.WriteLine(item);
 
-            }
+            //}
 
 
             //int[] tab = { 1, 4, 2, 5, 8, 5, 48, 4 };
@@ -46,6 +57,15 @@ namespace ConsoleApp1
             // tab.ForEach<int>(delegate (int a) { Console.WriteLine(a * a); });
 
             Console.ReadLine();
+        }
+
+        public static void test()
+        {
+            while (true)
+            {
+
+                Console.WriteLine("This thread" + Thread.CurrentThread.ManagedThreadId + " is on test");
+            }
         }
     }
 
@@ -107,6 +127,20 @@ namespace ConsoleApp1
 
 
             return fibo(n - 2) + fibo(n - 1);
+
+        }
+        public int fiboIte(int n)
+        {
+            int a = 0;
+            int b = 1;
+            // In N steps compute Fibonacci sequence iteratively.
+            for (int i = 0; i < n; i++)
+            {
+                int temp = a;
+                a = b;
+                b = temp + b;
+            }
+            return a;
 
         }
         public IEnumerable<int> YielD(int n)
