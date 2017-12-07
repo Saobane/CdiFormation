@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EventConsole")]
+[assembly: AssemblyTitle("ConsoleAppWCFHost")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EventConsole")]
+[assembly: AssemblyProduct("ConsoleAppWCFHost")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bd2e26e1-eb54-43e8-908d-9fbf756162ce")]
+[assembly: Guid("5f2fe35b-c208-4035-b26e-c4deacdaa681")]
 
 // Version information for an assembly consists of the following four values:
 //

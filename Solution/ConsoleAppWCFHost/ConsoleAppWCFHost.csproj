@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD2E26E1-EB54-43E8-908D-9FBF756162CE}</ProjectGuid>
+    <ProjectGuid>{5F2FE35B-C208-4035-B26E-C4DEACDAA681}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EventConsole</RootNamespace>
-    <AssemblyName>EventConsole</AssemblyName>
+    <RootNamespace>ConsoleAppWCFHost</RootNamespace>
+    <AssemblyName>ConsoleAppWCFHost</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CallBackWcfService\CallBackWcfService.csproj">
+      <Project>{aaf73bd2-ef69-4b57-b33a-47aee020375e}</Project>
+      <Name>CallBackWcfService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
