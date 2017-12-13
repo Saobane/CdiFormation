@@ -55,9 +55,9 @@ public class Producer_Consumer
     }
 
 
-    public static void Main()
-    {
-        Producer_Consumer factory = new Producer_Consumer();
-        factory.Run();
-    }
+    //public static void Main()
+    //{
+    //    Producer_Consumer factory = new Producer_Consumer();
+    //    factory.Run();
+    //}
 }

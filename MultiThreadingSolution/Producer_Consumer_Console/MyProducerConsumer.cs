@@ -23,9 +23,7 @@ namespace Producer_Consumer_Console
                 {
                     tmp = rnd.Next(20);
                     Console.WriteLine("Producer Thread {0} produced : {1} ", Thread.CurrentThread.ManagedThreadId, tmp);
-                    Monitor.Wait(baton);
                     myQueue.Enqueue(tmp);
-                    Monitor.Pulse(baton);
                 }
                
                 Thread.Sleep(4000);
@@ -39,7 +37,6 @@ namespace Producer_Consumer_Console
             {
                 lock (baton)
                 {
-                    Monitor.Pulse(baton);
 
                     if (myQueue.Count >0)
                     {
@@ -66,23 +63,23 @@ namespace Producer_Consumer_Console
             }
         }
 
-        //public static void Main(String[] args)
-        //{
-        //    Console.WriteLine("This is Main Thread {0}", Thread.CurrentThread.ManagedThreadId);
+        public static void Main(String[] args)
+        {
+            Console.WriteLine("This is Main Thread {0}", Thread.CurrentThread.ManagedThreadId);
 
-            
-           
 
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        new Thread(new ThreadStart(Produce)).Start();
-        //    }
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        new Thread(new ThreadStart(Consume)).Start();
-        //    }
 
-        //    Console.ReadLine();
-        //}
+
+            for (int i = 0; i < 4; i++)
+            {
+                new Thread(new ThreadStart(Produce)).Start();
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                new Thread(new ThreadStart(Consume)).Start();
+            }
+
+            Console.ReadLine();
+        }
     }
 }
