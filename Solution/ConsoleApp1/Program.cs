@@ -43,7 +43,11 @@ namespace ConsoleApp1
             MyClass<MyClass1> fr = new MyClass<MyClass1>();
             //fr.Maclasse = (MyClass1)test1;
             //Console.WriteLine(fr.ToString());
-            Console.WriteLine(fr.fiboIte(120) + "\n");
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine("Facto de "+i+" : "+fr.Facto(i) + "\n");
+            }
+           
             //foreach (var item in fr.YielD(10))
             //{
             //    Console.WriteLine(item);
@@ -55,14 +59,20 @@ namespace ConsoleApp1
 
             //Array.ForEach<int>(tab, delegate (int a) { Console.WriteLine(a * a); });
             // tab.ForEach<int>(delegate (int a) { Console.WriteLine(a * a); });
+            
 
             Console.ReadLine();
         }
-
+        private bool CheckString(String s)
+        {
+            s.Max();
+            return true;
+        }
         public static void test()
         {
             while (true)
             {
+               
 
                 Console.WriteLine("This thread" + Thread.CurrentThread.ManagedThreadId + " is on test");
             }
@@ -79,6 +89,7 @@ namespace ConsoleApp1
 
         public T Add<T> (T a, T b)
         {
+           
 
              return (dynamic) a + b;
         }
@@ -141,6 +152,16 @@ namespace ConsoleApp1
                 b = temp + b;
             }
             return a;
+
+        }
+        public int Facto(int n)
+        {
+            if (n==0)
+            {
+                return 1;
+            }
+
+            return n*Facto(n-1);
 
         }
         public IEnumerable<int> YielD(int n)
