@@ -83,10 +83,10 @@ namespace MyPricerClientWPF.ViewModel
         private BondClient GetDefaultBond()
         {
             BondClient bond = new BondClient();
-            bond.Maturity = 4;
+            bond.Maturity = 2;
             bond.Periodicity = 6;
-            bond.IssueDate = DateTime.Parse("20/05/1993");
-            bond.Rate = 0.06;
+            bond.IssueDate = DateTime.Parse("01/01/1993");
+            bond.Rate = 0.05;
             bond.Nominal = 100;
             return bond;
         }

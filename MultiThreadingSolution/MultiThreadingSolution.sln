@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dining_Philosophers_App", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_ Dining_Philosophers_App", "My_ Dining_Philosophers_App\My_ Dining_Philosophers_App.csproj", "{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Readers_Writers_Problem", "Readers_Writers_Problem\Readers_Writers_Problem.csproj", "{86DA12BB-B17E-42C1-87B9-C088D92F17E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DA12BB-B17E-42C1-87B9-C088D92F17E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DA12BB-B17E-42C1-87B9-C088D92F17E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DA12BB-B17E-42C1-87B9-C088D92F17E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DA12BB-B17E-42C1-87B9-C088D92F17E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
