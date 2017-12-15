@@ -24,9 +24,10 @@ namespace Producer_Consumer_Console
                     tmp = rnd.Next(20);
                     Console.WriteLine("Producer Thread {0} produced : {1} ", Thread.CurrentThread.ManagedThreadId, tmp);
                     myQueue.Enqueue(tmp);
+                    Monitor.Pulse(baton);
                 }
                
-                Thread.Sleep(4000);
+                Thread.Sleep(1000);
             }
 
         }
@@ -38,12 +39,18 @@ namespace Producer_Consumer_Console
                 lock (baton)
                 {
 
-                    if (myQueue.Count >0)
+                    while (myQueue.Count <= 0)
                     {
+                        Console.WriteLine("Thread {0} is waiting producer", Thread.CurrentThread.ManagedThreadId);
+
+                        Monitor.Wait(baton);
+                    }
+
+                   
                         try
                         {
                             Console.WriteLine("Thread {0} consumed {1} ", Thread.CurrentThread.ManagedThreadId, myQueue.Dequeue());
-                            Thread.Sleep(1000);
+                            //Thread.Sleep(1000);
                         }
                         catch (Exception)
                         {
@@ -53,11 +60,7 @@ namespace Producer_Consumer_Console
                         }
 
 
-                    }
-                    else
-                    {
-                        Console.WriteLine("Thread {0} try to get a value", Thread.CurrentThread.ManagedThreadId);
-                    }
+                  
                 }
             
             }

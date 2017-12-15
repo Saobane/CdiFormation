@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer Consumer Test", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer_Consumer_Console", "Producer_Consumer_Console\Producer_Consumer_Console.csproj", "{08F0CFEC-8069-4B9E-9094-E0C5B54456E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dining_Philosophers_App", "Dining_Philosophers_App\Dining_Philosophers_App.csproj", "{2D6C2C28-9806-4AC3-A7E1-DE16C6EDE47A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_ Dining_Philosophers_App", "My_ Dining_Philosophers_App\My_ Dining_Philosophers_App.csproj", "{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{08F0CFEC-8069-4B9E-9094-E0C5B54456E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08F0CFEC-8069-4B9E-9094-E0C5B54456E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08F0CFEC-8069-4B9E-9094-E0C5B54456E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6C2C28-9806-4AC3-A7E1-DE16C6EDE47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6C2C28-9806-4AC3-A7E1-DE16C6EDE47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6C2C28-9806-4AC3-A7E1-DE16C6EDE47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6C2C28-9806-4AC3-A7E1-DE16C6EDE47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE2844C-23DF-40D2-B576-D6017E7D4A7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
