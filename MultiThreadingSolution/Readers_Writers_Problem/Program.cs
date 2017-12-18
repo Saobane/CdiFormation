@@ -54,5 +54,5 @@ namespace Readers_Writers_Problem
                 Thread.Sleep(1000);
             }
         }
-    }
+    } 
 }
