@@ -16,6 +16,7 @@ namespace PokerHands
         [TestMethod]
         public void TestCreateNewDeck()
         {
+
             var mydeck = new CardDeck();
             var cards = "2 3 4 5 6 7 8 9 10 J Q K A";
             var cardsTab = cards.Split(' ');

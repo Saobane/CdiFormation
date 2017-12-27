@@ -17,7 +17,7 @@ namespace WpfMvvmSample.converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             SolidColorBrush brush = new SolidColorBrush(Colors.White);
-            
+
             if (value != null && value is bool?)
             {
                 bool? boolean = value as bool?;
