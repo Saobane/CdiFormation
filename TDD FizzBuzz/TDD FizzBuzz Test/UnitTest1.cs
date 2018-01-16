@@ -10,6 +10,7 @@ namespace TDD_FizzBuzz_Test
         [TestMethod]
         public void ShouldReturn1IfInputIs1()
         {
+            //²Tesdtcase
             Assert.AreEqual("1", FizzBuzz.Get(1));
         }
         [TestMethod]
@@ -75,7 +76,7 @@ namespace TDD_FizzBuzz_Test
         [TestMethod]
         [ExpectedException(typeof(InvalidImputExeption))]
         public void ShouldReturnInvalidImputExeptionIfInputsIsNegative()
-        {
+        { 
             FizzBuzz.Get(-1);
         }
     }

@@ -12,7 +12,7 @@ namespace MyClassLibrary
     {
         private int count;
         public int Count { get { return count;  } private set { count = value; } }
-
+        
         private int tabCapacity;
         private T[] TTab;
 
