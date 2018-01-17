@@ -6,7 +6,9 @@
         protected virtual int MaxDayRented => 2;
         protected virtual double MalusByDays => 1.5;
 
+        public delegate int mydel();
 
+        mydel m = () => { return 1; };
         public virtual double GetAmount(int daysRented)
         {
             double thisAmount = DefaultAmount;
@@ -20,4 +22,4 @@
             return 1;
         }
     }
-}
+}   
