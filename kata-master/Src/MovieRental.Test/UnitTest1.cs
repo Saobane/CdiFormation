@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MovieRental_csharp.Completed;
 
 namespace MovieRental.Test
 {
@@ -17,7 +18,8 @@ namespace MovieRental.Test
             customer.AddRental(rental);
 
             String statement = customer.Statement();
-            StringAssert.Contains("Transformer", statement);
+            StringAssert.Contains(statement, "Transformer");
+            
         }
     }
 }

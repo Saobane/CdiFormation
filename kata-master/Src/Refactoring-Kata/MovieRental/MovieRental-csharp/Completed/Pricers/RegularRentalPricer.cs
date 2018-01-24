@@ -7,6 +7,7 @@
         protected virtual double MalusByDays => 1.5;
 
         public delegate int mydel();
+        public event mydel fr;
 
         mydel m = () => { return 1; };
         public virtual double GetAmount(int daysRented)

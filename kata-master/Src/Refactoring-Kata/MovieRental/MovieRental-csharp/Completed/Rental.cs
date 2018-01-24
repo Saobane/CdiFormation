@@ -15,10 +15,11 @@
         {
             return $"\t{Movie.Title}\t{Amount}\n";
         }
-       }
-
         public double Amount => RentalPricerFactory.GetPricer(Movie.PriceCode).GetAmount(DaysRented);
 
         public int FrequentRenterPoints() => RentalPricerFactory.GetPricer(Movie.PriceCode).GetFrequentRenterPoints(DaysRented);
     }
+
+        
+    
 }
