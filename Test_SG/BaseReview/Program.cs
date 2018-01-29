@@ -10,7 +10,7 @@ namespace BaseReview
     {
         static void Main(string[] args)
         {
-            int[][] array = new int[4][69];
+            int[][] array = new int[4][];
 
             var Enume = Enumerable.Range(102, 40);
             User user = new User("DA SILVA","Sahobau");

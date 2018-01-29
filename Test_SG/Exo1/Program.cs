@@ -17,6 +17,11 @@ namespace Exo1
 
         //    }
         }
+        public void OnDiag(bool obj,int eventArgs)
+        {
+            if (DiagnosticsEvent != null)
+                DiagnosticsEvent(obj, eventArgs);
+        }
         static void Main(string[] args)
         {
 
@@ -91,6 +96,28 @@ namespace Exo1
             }
 
             throw new  NotImplementedException();
+        }
+    }
+
+    public sealed  class Singleton
+    {
+        private static Singleton _singleton;
+        private static readonly Object obj = new Object();
+        protected Singleton() { }
+
+        public static Singleton GetInstance()
+        {
+            if (_singleton == null)
+            {
+                lock (obj)
+                {
+                    if (_singleton == null) _singleton = new Singleton();
+                }
+
+            }
+
+
+            return _singleton;
         }
     }
 }

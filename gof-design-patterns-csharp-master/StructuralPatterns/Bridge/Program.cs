@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -34,6 +35,7 @@ namespace Bridge
         {
             IPlatformImplementation winPlatform = new WinPlatform();
             winPlatform.Name = "Windows";
+            StreamReader 
 
             new TimeslicedThreadScheduler(winPlatform).ScheduleJob();
 

@@ -5,11 +5,10 @@ using System.Text;
 
 namespace Bridge
 {
-    class WinPlatform:IPlatformImplementation
+    class WinPlatform : IPlatformImplementation
     {
         private string _name;
         #region IPlatformImplementation Members
-
         public string Name
         {
             get

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exo1", "Exo1\Exo1.csproj", "{BFF4CD51-25BA-4E4F-B41E-02C24B59F4D8}"
 EndProject
@@ -22,6 +22,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TETE", "TETE\TETE.csproj", "{50831026-6E44-4F80-BAC7-D7612EC7292C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseReview", "BaseReview\BaseReview.csproj", "{F036438C-F0DE-46A2-A119-CCB581A9E926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventReview", "EventReview\EventReview.csproj", "{FD933F4A-CFF5-4787-A519-9BC42AA5D488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeTest", "PalindromeTest\PalindromeTest.csproj", "{7240A764-2E42-462E-9A4A-67C29BD012C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeLib", "PalindromeLib\PalindromeLib.csproj", "{CBE7892E-8DD9-4EC9-99DD-C7980140DABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{F036438C-F0DE-46A2-A119-CCB581A9E926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F036438C-F0DE-46A2-A119-CCB581A9E926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F036438C-F0DE-46A2-A119-CCB581A9E926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD933F4A-CFF5-4787-A519-9BC42AA5D488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD933F4A-CFF5-4787-A519-9BC42AA5D488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD933F4A-CFF5-4787-A519-9BC42AA5D488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD933F4A-CFF5-4787-A519-9BC42AA5D488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7240A764-2E42-462E-9A4A-67C29BD012C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7240A764-2E42-462E-9A4A-67C29BD012C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7240A764-2E42-462E-9A4A-67C29BD012C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7240A764-2E42-462E-9A4A-67C29BD012C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE7892E-8DD9-4EC9-99DD-C7980140DABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE7892E-8DD9-4EC9-99DD-C7980140DABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE7892E-8DD9-4EC9-99DD-C7980140DABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE7892E-8DD9-4EC9-99DD-C7980140DABB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
