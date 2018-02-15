@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace EventReview
 {
-    public class Bank :IBank
+    public class Bank :IBank , ICloneable
     {
         private Dictionary<Person,Account> accounts{ get; set; }
         public string Name { get; internal set; }
 
         public event EventHandler<BankEventArg> AccountAdded;
+        public event Action<string> AccountDelete;
 
         public Bank(string name)
         {
@@ -49,7 +50,7 @@ namespace EventReview
             if (AccountExist(person))
                 accounts.Remove(person);
 
-            OnAccountAdded(this, new BankEventArg(" Account "+person.ToString() + " is remove from Bank " + Name));
+            OnAccountDeleted(" Account "+person.ToString() + " is remove from Bank " + Name);
         }
         public bool AccountExist(Person person)
         {
@@ -85,6 +86,18 @@ namespace EventReview
             {
                 AccountAdded(obj,bankEventArg);
             }
+        }
+        private void OnAccountDeleted(string i)
+        {
+            if (AccountDelete != null)
+            {
+                AccountDelete(i);
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

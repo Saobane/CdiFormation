@@ -10,6 +10,16 @@ namespace Fibo
     {
         static void Main(string[] args)
         {
+            int[] values = new[] { 1, 2, 3, 4 };
+            List<Action> actions = new List<Action>();
+            foreach (int v in values)
+            {
+                actions.Add(() => Console.WriteLine(v));
+            }
+            foreach (Action a in actions)
+            {
+                a();
+            }
             Console.WriteLine(" finonacci de 45 est : "+Fibo(1));
             Console.ReadLine();
         }

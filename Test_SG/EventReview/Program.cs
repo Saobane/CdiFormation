@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Threading;
 namespace EventReview
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Task<int> task = Task.Run(() => { Thread.Sleep(3000); return new Random().Next(10); });
+            Console.WriteLine(task.Result);
+            Console.ReadKey();
 
+            return;
             Console.Write("Enter a Number : ");
             int num=11;
             int k;
@@ -38,6 +42,7 @@ namespace EventReview
             IBank societeGenerale = new Bank("Societe Generale");
             IBank BNP = new Bank("BNP");
             societeGenerale.AccountAdded += Notifications;
+            societeGenerale.AccountDelete += SocieteGenerale_AccountDelete;
             BNP.AccountAdded += Notifications;
 
             societeGenerale.CreateAccount(person1);
@@ -55,7 +60,16 @@ namespace EventReview
             Console.WriteLine(BNP);
             BNP.DebitAccount(person1, 1200);
             Console.WriteLine(BNP);
+            societeGenerale.DeleteAccount(person1);
+
+            Console.WriteLine(societeGenerale);
+
             Console.ReadKey();
+        }
+
+        private static void SocieteGenerale_AccountDelete(string obj)
+        {
+            Console.WriteLine(obj);
         }
 
         private static void Notifications(object sender, BankEventArg e)

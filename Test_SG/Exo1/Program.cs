@@ -22,12 +22,23 @@ namespace Exo1
             if (DiagnosticsEvent != null)
                 DiagnosticsEvent(obj, eventArgs);
         }
+
+        public static void Test(string a)
+        {
+            a = "45";
+        }
         static void Main(string[] args)
         {
-
+            string de = "10";
+            Test(de);
+            Console.WriteLine(de.ToString() + "\t TESTTTT");
             
-
         int[] mytab = {1,4,2,3};
+
+            for (char i = 'A'; i <= 'Z'; i++)
+            {
+                Console.WriteLine(i.ToString() + "\t");
+            }
             var fr = mytab.GroupBy(x => x).Where(x=>x.Count()==1).Select(x=> x.Key).ToArray();
             Console.WriteLine("Le plus petit "+String.Join("\t",fr));
             String s = "Rodeur nu : un rue d'or";

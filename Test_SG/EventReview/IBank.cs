@@ -5,6 +5,7 @@ namespace EventReview
     public interface IBank
     {
         event EventHandler<BankEventArg> AccountAdded;
+        event Action<string> AccountDelete;
         void CreateAccount(Person person);
         void DeleteAccount(Person person);
         bool AccountExist(Person person);

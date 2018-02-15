@@ -14,6 +14,7 @@ namespace MovieRental_csharp.Completed
         public Customer(string name)
         {
             Name = name;
+          
         }
 
         public void AddRental(Rental rental)
